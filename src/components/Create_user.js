@@ -38,7 +38,7 @@ const Create_user = () => (
 );
 
 function signUp() {
-    axios.post('https://carnet-api.herokuapp.com/user/register', {
+    axios.post('https://carnet-api.herokuapp.com/user/register', { headers: {'Access-Control-Allow-Origin': 'https://carnet-client.herokuapp.com'} }, {
     })
         .then(function (response) {
             console.log(response);
