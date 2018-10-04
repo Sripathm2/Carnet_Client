@@ -5,6 +5,7 @@
   "homepage": "https://sripathm22.github.io/Carnet_Client/",
   "dependencies": {
     "axios": "^0.18.0",
+    "gh-pages": "^2.0.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-router": "^4.3.1",
