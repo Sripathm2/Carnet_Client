@@ -9,6 +9,7 @@ import Route from "react-router/es/Route";
 const App = () => (
     <Router>
         <div>
+            <p>testing testing</p>
             <Route exact path="/" component={Home} />
             <Route path="/create_user" component={Create_user} />
             <Route path="/dashboard" component={Dashboard} />
