@@ -31,9 +31,9 @@ function signUp() {
     userdata.securityAnswer = document.getElementById("SA").value;
     userdata.fname = document.getElementById("firstName").value;
     userdata.lname = document.getElementById("lastName").value;
-    //todo: passowrd check 
+    //todo: passowrd check
 
-    console.log(userdata.userName);
+    //console.log(userdata.userName);
     axios({
         method:'post',
         url:'https://carnet-api.herokuapp.com/user/register',
