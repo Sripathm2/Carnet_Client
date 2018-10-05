@@ -22,7 +22,7 @@ function enter(){
     userdata.userName = document.getElementById("username").value;
     userdata.password = document.getElementById("password").value;
 
-    let url='https://carnet-api.herokuapp.com/auth/token?userName='+userdata.userName+'&password=';
+    let url='https://carnet-api.herokuapp.com/auth/token?userName='+userdata.userName+'&password='+userdata.password;
 
     axios({
         method:'get',

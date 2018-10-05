@@ -1,0 +1,10 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+  app:
+    container_name: app1
+    restart: "no"
+    build: .
+    ports:
+    - "3000:3000"
