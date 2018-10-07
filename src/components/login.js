@@ -35,4 +35,16 @@ function enter(){
             console.log(error);
         });
 }
+
+/*function createCookie(name,days){
+    if(day) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        var expires = "; expires=" + date.toGMTString();
+    }
+    else{
+    else var expires = "";
+        document.cookie = value+expires+"; path=/";
+    }
+*/
 export default login;

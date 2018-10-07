@@ -1,14 +1,7 @@
 import React from 'react';
-
+import '../css/dashboard.css'
 const Dashboard = () => (
     <div className="App">
-        <head>
-            <meta charSet="utf-8"/>
-                <title>Carnet Inc.</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
-                    <link rel="stylesheet" href="../css/dashboard.css"/>
-        </head>
-        <body>
         <div id="container">
             <div id="header">
                 <div id="brand">
@@ -59,7 +52,6 @@ const Dashboard = () => (
 
         </div>
 
-        </body>
     </div>
 );
 
