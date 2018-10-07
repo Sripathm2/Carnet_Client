@@ -1,6 +1,8 @@
 import React from 'react';
-import '../css/bootstrap.css';
 import '../css/landing.css';
+import '../css/bootstrap.css';
+import '../css/bootstrap-grid.css';
+
 
 const Home = () => (
     <div className="App">
@@ -26,19 +28,22 @@ const Home = () => (
             </div>
         </nav>
 
-        <div class = "container-fluid" id= "landing">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                    <img class="img-responsive" src="../res/logo.jpg" title=""></img>
+        <div id= "landing" class="d-flex align-items-center">
+            <div  class = "container-fluid" >
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <img class="landingimg" src={require("../res/logo.png")} alt="cannot display"/>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                    <h3>Create | Share | Educate</h3>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+                        <h3>Create | Share | Educate</h3>
+                    </div>
                 </div>
             </div>
         </div>
+        
 
         <div class = "container-fluid" id= "about">
             <div class="row">

@@ -40,7 +40,7 @@ body {
   z-index: 1;
   width: 27.25%;
   height: 176px;
-  background-image: url('../res/Logo(4).JPG');
+  background-image: url('../res/logo.jpg');
   background-size: contain;
   background-position: 50% -10%;
 }
@@ -64,7 +64,7 @@ body {
   z-index: 2;
   width: 27.25%;
   height: 353px;
-  background-image: url('../res/Logo(4).JPG');
+  background-image: url('../res/logo.jpg');
   background-size: auto auto;
   background-position: center center;
 }
@@ -160,7 +160,7 @@ body {
   width: 27.25%;
   height: 353px;
   margin: -497px 0 0 13.69921875%;
-  background-image: url('../res/Logo(4).JPG');
+  background-image: url('../res/logo.jpg');
   background-size: cover;
   background-position: 60% 50%;
 }

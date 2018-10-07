@@ -1,3 +1,12 @@
-#landing{
-    background-image: url("../res/landing.jpg");
+#landing
+{
+    background-image: url('../res/landing.jpg');
+    width: 100%;
+    height: 750px;
+    background-size: cover;
+}
+
+.landingimg{
+    height: 100%;
+    width: auto;
 }
