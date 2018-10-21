@@ -2,7 +2,8 @@ import React from 'react';
 import '../css/signup-grid.css';
 import '../css/standardize.css';
 import '../css/styles.css';
-import axios from 'axios'
+import axios from 'axios';
+import { Link } from "react-router-dom";
 
 const Create_user = () => (
     <div className="App body page-signup clearfix">
@@ -18,7 +19,7 @@ const Create_user = () => (
         <p className="text text-2">Welcome!</p>
         <input id = "SA" className="_input _input-18" placeholder="Answer" type="text"/>
         <button className="_button _button-4" onClick={signUp}>Sign Up</button>
-        <p className="text text-5">Already have a Account ? <a>Login</a></p>
+        <Link to="/login" >Already have a Account ? </Link>
     </div>
 );
 
@@ -31,9 +32,6 @@ function signUp() {
     userdata.securityAnswer = document.getElementById("SA").value;
     userdata.fname = document.getElementById("firstName").value;
     userdata.lname = document.getElementById("lastName").value;
-    //todo: passowrd check
-
-    //console.log(userdata.userName);
     axios({
         method:'post',
         url:'https://carnet-api.herokuapp.com/user/register',
@@ -47,10 +45,12 @@ function signUp() {
         }
     })
         .then(function (response) {
-            console.log(response);
+            console.log(response.data);
+            window.location.replace("/login");
+
         })
         .catch(function (error) {
-            console.log(error);
+            console.log(error + '1');
         });
 }
 export default Create_user;
