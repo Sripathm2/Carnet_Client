@@ -2,14 +2,17 @@ import React from 'react';
 import '../css/signup-grid.css';
 import '../css/standardize.css';
 import '../css/styles.css';
-import axios from 'axios'
+import axios from 'axios';
+import logo from '../res/Logo(4).JPG';
 import {Link} from "react-router-dom";
 
 
 const login = () => (
     <div className="App body page-index clearfix">
         <div class="container12132332e"></div>
-        <div class="container2323"></div>
+        <div class="container2323">
+            <img src={logo} alt="logo"/>
+        </div>
         <input id="username" className="_input _input-13" placeholder="Username" type="text"/>
         <input id="password" className="_input _input-16" placeholder="Password" type="password"/>
         <button className="_button _button-2" onClick={enter}>Login</button>
@@ -22,7 +25,6 @@ function forgotPassword(){
     let userdata = {};
     userdata.userName = document.getElementById("username").value;
 
-    console.log("swdcwsd");
     if(userdata.userName.length < 6){
         alert('Please enter your username before proceeding for forgotPassword.');
         return;
@@ -35,8 +37,10 @@ function forgotPassword(){
         url:url,
     })
         .then(function (response) {
+            document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = 'user=' + userdata.userName + ';path=/';
             document.cookie = 'securityQuestion=' + response.data.securityQuestion + ';path=/';
-            window.location.replace("/forget");
+            window.location.replace("/forgot");
 
         })
         .catch(function (error) {

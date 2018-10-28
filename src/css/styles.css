@@ -48,6 +48,14 @@ body {
   border-radius: 12px;
   background-color: rgb(255, 255, 255);
 }
+.containerLogo {
+  position: absolute;
+  top: 118px;
+  left: 11.0846354166%;
+  width: 32.0833333333%;
+  height: 425px;
+  background-color: rgb(255, 255, 255);
+}
 .container-4,
 .container232312 {
   position: absolute;
@@ -144,9 +152,8 @@ body {
   width: 27.25%;
   height: 353px;
   margin: -497px 0 0 13.69921875%;
-  background-image: url('../res/Logo(4).JPG');
   background-size: cover;
-  background-position: 60% 50%;
+  background-position: 70% 60%;
 }
 .container-3 {
   z-index: 0;

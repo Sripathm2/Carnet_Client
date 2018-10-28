@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/signup-grid.css';
 import '../css/standardize.css';
+import logo from '../res/Logo(4).JPG';
 
 import axios from 'axios';
 import { Link } from "react-router-dom";
@@ -8,7 +9,9 @@ import { Link } from "react-router-dom";
 const Create_user = () => (
     <div className="App body page-signup clearfix">
         <div className="container _element container-1"></div>
-        <div className="container _element container-2"></div>
+        <div className="container _element container-2">
+            <img src={logo} alt="logo"/>
+        </div>
         <input id ="firstName" className="_input _input-1" placeholder="First Name" type="text"/>
         <input id = "lastName" className="_input _input-2" placeholder="Last Name" type="text"/>
         <input id = "emailId" className="_input _input-3" placeholder="Email Address" type="email"/>
@@ -19,7 +22,7 @@ const Create_user = () => (
         <p className="text text-2">Welcome!</p>
         <input id = "SA" className="_input _input-18" placeholder="Answer" type="text"/>
         <button className="_button _button-4" onClick={signUp}>Sign Up</button>
-        <Link to="/login" >Already have a Account ? </Link>
+        <Link className="text text-5" to="/login" >Already have a Account ? </Link>
     </div>
 );
 

@@ -2,6 +2,7 @@ import React from 'react';
 //import '../css/landing.css';
 //import '../css/bootstrap.css';
 //import '../css/bootstrap-grid.css';
+import axios from 'axios';
 
 
 const Home = () => (
@@ -102,7 +103,7 @@ const Home = () => (
                         <textarea className="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
                     </div>
                     <hr></hr>
-                    <button type="submit" className="btn btn-light">Submit</button>
+                    <button type="submit" className="btn btn-light" onClick={feedback}>Submit</button>
                 </form>
             </div>
 
@@ -116,5 +117,24 @@ const Home = () => (
 
     </div>
 );
+
+function feedback(){
+
+    axios({
+        method:'post',
+        url:'https://carnet-api.herokuapp.com/feedback/',
+        data:{
+            feedbackText:document.getElementById("exampleFormControlTextarea1").value,
+        }
+    })
+        .then(function (response) {
+            console.log(response.data);
+            window.location.replace("/");
+
+        })
+        .catch(function (error) {
+            console.log(error + '1');
+        });
+}
 
 export default Home;
