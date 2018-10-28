@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background-color: #f2f2f2;
 }
 
 .App-logo {
@@ -26,4 +25,17 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.editorContainer {
+  padding: 1em;
+  margin: 1em;
+}
+
+.editors {
+  border: 1px blue solid;
+  padding: 1em;
+  margin: 1em;
+  font-family: 'Open Sans';
+  font-size: 90%;
 }
