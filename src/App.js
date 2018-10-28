@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard'
 import login from './components/login'
 import forgotpassword from './components/forgotpassword'
 
+
 import Route from "react-router/es/Route";
 
 const App = () => (
@@ -16,7 +17,8 @@ const App = () => (
             <Route path="/create_user" component={Create_user} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/login" component={login}/>
-            <Route path="/forgotpassword" component={forgotpassword}/>
+            <Route path="/forgot" component={forgotpassword}/>
+
         </div>
     </Router>
 );
