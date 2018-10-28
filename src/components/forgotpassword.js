@@ -5,11 +5,10 @@ import '../css/styles.css';
 import axios from 'axios'
 
 const forgotpassword = () => (
-    load(),
         <div className="App body page-forgetpassword clearfix">
             <div className="container _element container-3"></div>
             <div className="container"></div>
-            <input id = "Q"className="_input _input-5" placeholder="Enter Security Question" type="text"/>
+            <input id = "Q" className="_input _input-5" placeholder="Enter Security Question" type="text"/>
             <input id = "A" className="_input _input-7" placeholder="Answer" type="text"/>
             <input id = "password"className="_input _input-10" placeholder="Password" type="password"/>
             <input id = "repass"className="_input _input-14" placeholder="Re-Enter Password" type="password"/>
@@ -58,7 +57,7 @@ function reset(){
         });
 }
 
-function load(){
+/**function load(){
     let user;
     user = readCookie();
 
@@ -74,7 +73,7 @@ function load(){
         .catch(function (error) {
             console.log(error);
         });
-}
+}*/
 export default forgotpassword;
 
 

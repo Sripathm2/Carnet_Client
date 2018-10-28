@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/signup-grid.css';
 import '../css/standardize.css';
-import '../css/styles.css';
+
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
