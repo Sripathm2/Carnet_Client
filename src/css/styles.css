@@ -186,7 +186,7 @@ body {
   z-index: 5;
   width: 20.40078125%;
   min-height: 23px;
-  margin: 29px 0 0 39.76693%;
+  margin: 27px 0 0 39.76693%;
   font-size: 1em;
   color: rgb(0, 0, 0);
 }
@@ -196,7 +196,7 @@ body {
   z-index: 5;
   width: 20.40078125%;
   min-height: 23px;
-  margin: 31px 0 0 39.76693%;
+  margin: 29px 0 0 39.76693%;
   font-size: 1em;
   color: rgb(0, 0, 0);
 }
@@ -395,4 +395,7 @@ body {
   word-break: normal;
   word-wrap: normal;
   white-space: normal;
+}
+.logo{
+  height: 250px;
 }
