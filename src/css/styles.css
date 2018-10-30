@@ -1,376 +1,586 @@
 body {
   background-color: rgb(29, 72, 140);
-  font: 400 0.688em/1.38 Helvetica;
+  font: 400 1em/1.38 Helvetica;
   color: rgb(0, 0, 0);
 }
-.page-forgetpassword,
-.page-forgetpassword-copy {
+
+.page-dashboard,
+.page-forgetpassword {
   color: rgb(29, 72, 140);
 }
-.page-dashboard,
+
 .page-index {
   color: rgb(255, 255, 255);
 }
+
 .page-signup {
   color: rgb(0, 0, 0);
 }
-.container .container {
+
+.buttonlogin {
+  float: left;
+  clear: both;
+  width: 63.9156331592%;
+  height: 43px;
+  margin: 33px 0 0 17.54243%;
+  border-radius: 3px;
+  background-color: rgb(29, 72, 140);
+  font-size: 1em;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.containerhead {
+  float: left;
+  width: 80%;
+  height: 84px;
+  margin: 28px 0 0 10%;
+  border-radius: 15px;
   background-color: rgb(255, 255, 255);
 }
-.container .text {
+
+.containerlogo {
+  float: left;
+  width: 14.5833333333%;
+  height: 84px;
+  margin-left: 1.45671%;
+  background-image: url('../res/logo.jpg');
+  background-size: cover;
+  background-position: center center;
+}
+
+.containerlogocreate {
   position: relative;
-  clear: both;
-  z-index: 1;
-  width: 57.49235474%;
-  min-height: 19px;
-  margin: -109px 0 0 178.35436%;
-  font-size: 1em;
-  color: rgb(0, 0, 0);
+  float: left;
+  z-index: 11;
+  width: 32.6021934197%;
+  height: 353px;
+  margin: 74px 0 0 6.21729%;
+  background-image: url('../res/logo.jpg');
+  background-size: cover;
+  background-position: 60% 50%;
 }
-.container12132332e {
+
+.containerlogoforgot {
   position: absolute;
-  top: 131px;
-  left: 36.4166666666%;
-  z-index: 1;
-  width: 27.25%;
-  height: 176px;
-  background-image: url('../res/Logo(4).JPG');
-  background-size: contain;
-  background-position: 50% -10%;
+  top: 49px;
+  left: 5.980911983%;
+  z-index: 6;
+  width: 34.6765641569%;
+  height: 353px;
+  background-image: url('../res/logo.jpg');
+  background-size: auto auto;
+  background-position: center center;
 }
-.container2323 {
+
+.containerlogologin {
+  position: absolute;
+  top: 12px;
+  left: 7.0455287206%;
+  width: 85.3785900783%;
+  height: 176px;
+  background-image: url('../res/logo.jpg');
+  background-size: cover;
+  background-position: left center;
+}
+
+.containermain {
+  position: relative;
+  float: left;
+  z-index: 3;
+  width: 59.5833333333%;
+  height: 1032px;
+  margin: 6px 0 0 0.83073%;
+  border-radius: 15px;
+  background-color: rgb(255, 255, 255);
+}
+
+.containermaincreate {
+  float: left;
+  width: 83.75%;
+  height: 572px;
+  margin: 27px 0 0 8.5013020833%;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 12px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+}
+
+.containermainforgot {
+  position: relative;
+  float: left;
+  width: 78.75%;
+  height: 519px;
+  margin: 38px 0 0 10.58073%;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 12px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+}
+
+.containermainlogin {
   position: absolute;
   top: 118px;
   left: 34.0846354166%;
+  z-index: 6;
   width: 32.0833333333%;
   height: 476px;
   border: 1px solid rgb(0, 0, 0);
   border-radius: 12px;
   background-color: rgb(255, 255, 255);
 }
-.containerLogo {
-  position: absolute;
-  top: 118px;
-  left: 11.0846354166%;
-  width: 32.0833333333%;
-  height: 425px;
+
+.containernotebook {
+  float: left;
+  clear: both;
+  width: 92.4475524475%;
+  height: 908px;
+  margin: 28px 0 0 3.49869%;
+}
+
+.containerside {
+  position: relative;
+  float: left;
+  clear: both;
+  z-index: 8;
+  width: 19.5833333333%;
+  height: 1032px;
+  margin: 6px 0 0 10%;
+  border-radius: 15px;
   background-color: rgb(255, 255, 255);
 }
-.container-4,
-.container232312 {
-  position: absolute;
-  top: 96px;
-  left: 12.9309895833%;
-  z-index: 2;
-  width: 27.25%;
-  height: 353px;
-  background-image: url('../res/Logo(4).JPG');
-  background-size: auto auto;
+
+.containeruserimage {
+  float: left;
+  width: 100%;
+  height: 175px;
+  margin-top: 22px;
+  background-image: url('../res/user.jpg');
+  background-repeat: repeat-y;
+  background-size: contain;
   background-position: center center;
 }
-.container232312:active,
-.container232312:focus,
-.container232312:hover {
-  padding-top: 0;
-  padding-right: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-}
-.text {
+
+.inputanscreate {
+  display: block;
+  position: relative;
   float: left;
+  z-index: 0;
+  width: 42.1734795613%;
+  height: 39px;
+  margin: -5px 0 0 12.92373%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 0.813em;
+  color: rgb(0, 0, 0);
 }
-.App {
-  font-family: sans-serif;
+
+.inputanswerforgot {
+  display: block;
+  position: relative;
+  float: left;
+  clear: both;
+  z-index: 2;
+  width: 44.8568398727%;
+  height: 39px;
+  margin: 13px 0 0 51.51279%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 0.813em;
+  color: rgb(0, 0, 0);
+}
+
+.inputemailcreate {
+  display: block;
+  position: relative;
+  float: left;
+  z-index: 5;
+  width: 42.1734795613%;
+  height: 39px;
+  margin: -270px 0 0 51.73542%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 0.813em;
+  color: rgb(0, 0, 0);
+}
+
+.inputfncreate {
+  display: block;
+  position: relative;
+  float: left;
+  z-index: 9;
+  width: 42.1734795613%;
+  height: 39px;
+  margin: 50px 0 0 12.91906%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 0.813em;
+  color: rgb(0, 0, 0);
+}
+
+.inputlncreate {
+  display: block;
+  position: relative;
+  float: left;
+  clear: both;
+  z-index: 6;
+  width: 42.1734795613%;
+  height: 39px;
+  margin: -322px 0 0 51.74321%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 0.813em;
+  color: rgb(0, 0, 0);
+}
+
+.inputpasscreate {
+  display: block;
+  position: relative;
+  float: left;
+  z-index: 3;
+  width: 42.1734795613%;
+  height: 39px;
+  margin: -164px 0 0 51.74321%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 0.813em;
+  color: rgb(0, 0, 0);
+}
+
+.inputpassforgot {
+  display: block;
+  position: relative;
+  float: left;
+  clear: both;
+  z-index: 5;
+  width: 44.8568398727%;
+  height: 39px;
+  margin: 19px 0 0 51.50948%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 0.813em;
+  color: rgb(0, 0, 0);
+}
+
+.inputpasswordlogin {
+  display: block;
+  float: left;
+  clear: both;
+  width: 85.3785900783%;
+  height: 54px;
+  margin: 10px 0 0 6.9721%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 0.813em;
+  color: rgb(0, 0, 0);
+}
+
+.inputrepasscreate {
+  display: block;
+  position: relative;
+  float: left;
+  z-index: 2;
+  width: 42.1734795613%;
+  height: 39px;
+  margin: -107px 0 0 51.74321%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 0.813em;
+  color: rgb(0, 0, 0);
+}
+
+.inputrepassforgot {
+  display: block;
+  position: relative;
+  float: left;
+  clear: both;
+  z-index: 4;
+  width: 44.8568398727%;
+  height: 39px;
+  margin: 13px 0 0 51.51279%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 0.813em;
+  color: rgb(0, 0, 0);
+}
+
+.inputsecuritycreate {
+  display: block;
+  position: relative;
+  float: left;
+  z-index: 1;
+  width: 42.1734795613%;
+  height: 39px;
+  margin: -57px 0 0 51.74321%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 0.813em;
+  color: rgb(0, 0, 0);
+}
+
+.inputsecurityforgot {
+  display: block;
+  position: relative;
+  float: left;
+  z-index: 3;
+  width: 44.8568398727%;
+  height: 39px;
+  margin: 116px 0 0 51.50948%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 0.813em;
+  color: rgb(0, 0, 0);
+}
+
+.inputusercreate {
+  display: block;
+  position: relative;
+  float: left;
+  z-index: 4;
+  width: 42.1734795613%;
+  height: 39px;
+  margin: -216px 0 0 51.73542%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 0.813em;
+  color: rgb(0, 0, 0);
+}
+
+.inputusernamelogin {
+  display: block;
+  float: left;
+  width: 85.3785900783%;
+  height: 54px;
+  margin: 204px 0 0 6.9721%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 0.813em;
+  color: rgb(0, 0, 0);
+}
+
+.resetforgot {
+  display: block;
+  position: relative;
+  float: left;
+  clear: both;
+  z-index: 0;
+  width: 29.3097163308%;
+  height: 29px;
+  margin: 27px 0 0 59.93339%;
+  border-radius: 3px;
+  background-color: rgb(29, 72, 140);
+  font-size: 1em;
   text-align: center;
+  color: rgb(255, 255, 255);
 }
-.text1 {
-  position: absolute;
-  top: 472px;
-  left: 12.9309895833%;
-  z-index: 8;
-  width: 27.25%;
-  min-height: 63px;
-  font-size: 2.727em;
+
+.signupcreate {
+  display: block;
+  float: left;
+  clear: both;
+  width: 27.517447657%;
+  height: 38px;
+  margin-left: 60.01682%;
+  border-radius: 3px;
+  background-color: rgb(29, 72, 140);
+  font-size: 1em;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.textcreatelogin {
+  float: left;
+  clear: both;
+  width: 82.7676240208%;
+  min-height: 23px;
+  margin: 44px 0 0 7.04553%;
+  font-size: 0.688em;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.textemail {
+  float: left;
+  clear: both;
+  width: 90.2127659574%;
+  min-height: 35px;
+  margin-left: 5.95745%;
+  font-size: 1em;
   text-align: center;
   color: rgb(29, 72, 140);
 }
+
+.textforgotlogin {
+  float: left;
+  clear: both;
+  width: 85.1174934725%;
+  min-height: 23px;
+  margin: 29px 0 0 7.04553%;
+  font-size: 0.688em;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.textlogincreate {
+  float: left;
+  clear: both;
+  width: 18.7437686939%;
+  min-height: 19px;
+  margin: 27px 0 0 64.86167%;
+  font-size: 0.688em;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.textloginforgot {
+  position: relative;
+  float: left;
+  clear: both;
+  z-index: 7;
+  width: 29.2682926829%;
+  min-height: 19px;
+  margin: 22px 0 0 59.91351%;
+  font-size: 0.688em;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.textname {
+  float: left;
+  clear: both;
+  width: 90.2127659574%;
+  min-height: 39px;
+  margin: 5px 0 0 5.95745%;
+  font-size: 1em;
+  font-weight: 700;
+  text-align: center;
+  color: rgb(29, 72, 140);
+}
+
+.textsubs {
+  float: left;
+  clear: both;
+  width: 90.2127659574%;
+  min-height: 32px;
+  margin-left: 5.95745%;
+  font-size: 1em;
+  text-align: center;
+  color: rgb(29, 72, 140);
+}
+
+.texttitlecreate {
+  position: relative;
+  float: left;
+  z-index: 7;
+  width: 32.6021934197%;
+  min-height: 63px;
+  margin: 23px 0 0 6.21729%;
+  font-size: 1.875em;
+  text-align: center;
+  color: rgb(29, 72, 140);
+}
+
+.texttitleforgot {
+  position: absolute;
+  top: 414px;
+  left: 3.7115588547%;
+  z-index: 1;
+  width: 40.5090137857%;
+  min-height: 63px;
+  font-size: 1.875em;
+  text-align: center;
+  color: rgb(29, 72, 140);
+}
+
 ._button {
   display: block;
   float: left;
-  border-radius: 3px;
-  background-color: rgb(29, 72, 140);
-  font-size: 1.455em;
+  font-size: 1em;
   text-align: center;
-  color: rgb(255, 255, 255);
-}
-._element {
-  position: relative;
-  float: left;
-}
-._input {
-  display: block;
-  position: relative;
-  float: left;
-  padding: 0 10px;
-  background-color: rgb(242, 242, 242);
-  font-size: 1.182em;
   color: rgb(0, 0, 0);
-}
-.container ._button {
-  width: 10.75%;
-  height: 37px;
-  margin: 38px 0 0 88.33203%;
-}
-.container ._container {
-  float: left;
-  width: 401.3377926421%;
-  height: 124px;
-  margin: -39px 0 0 -252.03804%;
-}
-.container ._element {
-  z-index: 0;
-  width: 288.990825688%;
-  height: 505px;
-  margin: -38px 0 0 -9.2173200001%;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
-}
-.container-1 {
-  z-index: 0;
-  width: 83.75%;
-  height: 572px;
-  margin: 25px 0 0 8.41796875%;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 12px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
-}
-.container-2 {
-  clear: both;
-  z-index: 1;
-  width: 27.25%;
-  height: 353px;
-  margin: -497px 0 0 13.69921875%;
-  background-size: cover;
-  background-position: 70% 60%;
-}
-.container-3 {
-  z-index: 0;
-  width: 78.75%;
-  height: 505px;
-  margin: 58px 0 0 10.41797%;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 12px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
-}
-.container-6 {
-  float: left;
-  width: 24.9166666666%;
-  height: 36px;
-  margin: 63px 0 0 62.79948%;
-}
-.text-2 {
-  position: relative;
-  z-index: 12;
-  width: 27.25%;
-  min-height: 63px;
-  margin: -121px 0 0 13.69922%;
-  font-size: 2.727em;
-  color: rgb(29, 72, 140);
-}
-.text-3 {
-  position: relative;
-  clear: both;
-  z-index: 5;
-  width: 20.40078125%;
-  min-height: 23px;
-  margin: 27px 0 0 39.76693%;
-  font-size: 1em;
-  color: rgb(0, 0, 0);
-}
-.text-32 {
-  position: relative;
-  clear: both;
-  z-index: 5;
-  width: 20.40078125%;
-  min-height: 23px;
-  margin: 29px 0 0 39.76693%;
-  font-size: 1em;
-  color: rgb(0, 0, 0);
-}
-.text-4 {
-  position: relative;
-  z-index: 1;
-  width: 15.6666666666%;
-  min-height: 19px;
-  margin: -109px 0 0 61.53255%;
-  font-size: 1em;
-  color: rgb(0, 0, 0);
-}
-.text-5 {
-  position: relative;
-  z-index: 2;
-  width: 15.6666666666%;
-  min-height: 19px;
-  margin: -48px 0 0 62.33203%;
-  font-size: 1em;
-  color: rgb(0, 0, 0);
-}
-.text-6 {
-  clear: both;
-  width: 20.3997395833%;
-  min-height: 23px;
-  margin: 44px 0 0 39.76693%;
-  font-size: 1em;
-  color: rgb(255, 255, 255);
-}
-._button-1 {
-  position: relative;
-  z-index: 7;
-  width: 23.0325520833%;
-  height: 29px;
-  margin: -160px 0 0 57.59896%;
-}
-._button-2 {
-  position: relative;
-  clear: both;
-  z-index: 4;
-  width: 20.4%;
-  height: 43px;
-  margin: 33px 0 0 39.76693%;
-}
-._button-3 {
-  position: relative;
-  clear: both;
-  z-index: 7;
-  width: 23.0325520833%;
-  height: 29px;
-  margin: 27px 0 0 57.59896%;
-}
-._button-4 {
-  position: relative;
-  z-index: 11;
-  width: 23.0333333333%;
-  height: 29px;
-  margin: -87px 0 0 58.75%;
-}
-._input-1 {
-  z-index: 3;
-  width: 35.25%;
-  height: 39px;
-  margin: -521px 0 0 51.7487%;
-}
-._input-10 {
-  z-index: 3;
-  width: 35.25%;
-  height: 39px;
-  margin: -278px 0 0 50.9804699999%;
-}
-._input-11 {
-  clear: both;
-  z-index: 6;
-  width: 35.25%;
-  height: 39px;
-  margin: 13px 0 0 50.98177%;
-}
-._input-12 {
-  z-index: 9;
-  width: 35.25%;
-  height: 39px;
-  margin: -201px 0 0 51.75%;
-}
-._input-13 {
-  z-index: 2;
-  width: 27.25%;
-  height: 54px;
-  margin: 323px 0 0 36.39974%;
-}
-._input-14 {
-  z-index: 4;
-  width: 35.25%;
-  height: 39px;
-  margin: -226px 0 0 50.98177%;
-}
-._input-15 {
-  clear: both;
-  z-index: 3;
-  width: 35.25%;
-  height: 39px;
-  margin: 19px 0 0 50.9804699999%;
-}
-._input-16 {
-  clear: both;
-  z-index: 3;
-  width: 27.25%;
-  height: 54px;
-  margin: 10px 0 0 36.39974%;
-}
-._input-17 {
-  clear: both;
-  z-index: 4;
-  width: 35.25%;
-  height: 39px;
-  margin: 13px 0 0 50.98177%;
-}
-._input-18 {
-  z-index: 10;
-  width: 35.25%;
-  height: 39px;
-  margin: -149px 0 0 51.7487%;
-}
-._input-2 {
-  z-index: 4;
-  width: 35.25%;
-  height: 39px;
-  margin: -466px 0 0 51.75%;
-}
-._input-3 {
-  z-index: 5;
-  width: 35.25%;
-  height: 39px;
-  margin: -414px 0 0 51.74349%;
-}
-._input-4 {
-  z-index: 6;
-  width: 35.25%;
-  height: 39px;
-  margin: -360px 0 0 51.74349%;
-}
-._input-5 {
-  clear: both;
-  z-index: 5;
-  width: 35.25%;
-  height: 39px;
-  margin: -388px 0 0 50.9804699999%;
-}
-._input-6 {
-  z-index: 7;
-  width: 35.25%;
-  height: 39px;
-  margin: -308px 0 0 51.75%;
-}
-._input-7 {
-  z-index: 6;
-  width: 35.25%;
-  height: 39px;
-  margin: -336px 0 0 50.98177%;
-}
-._input-8 {
-  z-index: 5;
-  width: 35.25%;
-  height: 39px;
-  margin: 175px 0 0 50.9804699999%;
-}
-._input-9 {
-  z-index: 8;
-  width: 35.25%;
-  height: 39px;
-  margin: -251px 0 0 51.75%;
 }
 
-.text a {
+._input {
+  display: block;
+  float: left;
+  width: 25.4166666666%;
+  height: 34px;
+  margin: 23px 0 0 42.5%;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 0.813em;
+  color: rgb(0, 0, 0);
+}
+
+.containerhead ._button {
+  width: 13.2291666666%;
+  height: 34px;
+  margin: 23px 0 0 1.04167%;
+  border-radius: 3px;
+  background-color: rgb(29, 72, 140);
+}
+
+.containermain ._button {
+  position: relative;
+  height: 44px;
+  margin-top: 14px;
+  background-color: rgb(255, 255, 255);
+  font-weight: 700;
+}
+
+.containermain ._button:hover {
+  color: rgb(29, 72, 140);
+}
+
+.containermain ._button:active {
+  background-color: rgb(255, 255, 255);
+}
+
+.containermain ._button-2 {
+  z-index: 0;
+  width: 49.5104895104%;
+  margin-left: 0.00219%;
+  border-right: 1px solid rgb(29, 72, 140);
+}
+
+.containermain ._button-3 {
+  z-index: 1;
+  width: 49.93006993%;
+  margin-left: 0.55726%;
+  border-left: 1px solid rgb(29, 72, 140);
+}
+
+.buttonlogin span {
+  border-top-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-color: transparent;
+  border-style: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: transparent;
+  font-family: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-transform: inherit;
+  text-decoration: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  color: inherit;
+  opacity: 1;
+  word-break: normal;
+  word-wrap: normal;
+  white-space: normal;
+}
+
+.textcreatelogin a,
+.textforgotlogin a,
+.textlogincreate a,
+.textloginforgot a {
   border-top-width: 0;
   border-right-width: 0;
   border-bottom-width: 0;
@@ -396,6 +606,30 @@ body {
   word-wrap: normal;
   white-space: normal;
 }
-.logo{
-  height: 250px;
+
+.textname span {
+  border-top-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-color: transparent;
+  border-style: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: transparent;
+  font-family: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-transform: none;
+  text-decoration: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  color: inherit;
+  opacity: 1;
+  word-break: normal;
+  word-wrap: normal;
+  white-space: normal;
 }

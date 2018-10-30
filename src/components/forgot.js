@@ -3,24 +3,21 @@ import '../css/forgetpassword-grid.css';
 import '../css/standardize.css';
 import '../css/styles.css';
 import axios from 'axios';
-import logo from '../res/Logo(4).JPG';
+
 
 
 const forgot = () => (
         <div onLoad={load} className="App body page-forgetpassword clearfix">
-            <div className="container _element container-3"></div>
-            <div className="containerLogo">
-                <img src={logo} alt="logo"/>
+            <div class="containermainforgot clearfix">
+                <div class="containerlogoforgot"></div>
+                <input id = "Q" class="inputsecurityforgot" placeholder="Enter Security Question" type="text"/>
+                <input id = "A" class="inputanswerforgot" placeholder="Answer" type="text"/>
+                <input id = "password" class="inputpassforgot" placeholder="Password" type="password"/>
+                <input class="inputrepassforgot" placeholder="Re-Enter Password" type="password"/>
+                <button class="resetforgot" onClick={reset}>Reset</button>
+                <p class="textloginforgot"><a href = "/login">Login</a></p>
+                <p class="texttitleforgot">Reset Password</p>
             </div>
-            <div className="container"></div>
-            <input id = "Q" className="_input _input-5" placeholder="Enter Security Question" type="text"/>
-            <input id = "A" className="_input _input-7" placeholder="Answer" type="text"/>
-            <input id = "password" className="_input _input-10" placeholder="Password" type="password"/>
-            <input id = "repass" className="_input _input-14" placeholder="Re-Enter Password" type="password"/>
-            <button className="_button _button-1" onClick={reset}>Reset</button>
-            <p className="text1">Reset Password</p>
-            <p className="text text-4"><a  href="/login">Login</a></p>
-
 
         </div>
 );

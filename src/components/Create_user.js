@@ -1,28 +1,26 @@
 import React from 'react';
 import '../css/signup-grid.css';
 import '../css/standardize.css';
-import logo from '../res/Logo(4).JPG';
-
+import '../css/styles.css';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
 const Create_user = () => (
     <div className="App body page-signup clearfix">
-        <div className="container _element container-1"></div>
-        <div className="container _element container-2">
-            <img src={logo} alt="logo"/>
+        <div className="containermaincreate clearfix">
+            <div className="containerlogocreate"></div>
+            <input id = "firstName" className="inputfncreate" placeholder="First Name" type="text"/>
+            <input id = "lastName" className="inputlncreate" placeholder="Last Name" type="text"/>
+            <input id ="emailId" className="inputemailcreate" placeholder="Email Address" type="email"/>
+            <input id = "userName" className="inputusercreate" placeholder="User Name" type="text"/>
+            <input id = "password" className="inputpasscreate" placeholder="Password" type="password"/>
+            <input id = "rePass" className="inputrepasscreate" placeholder="Re-Enter Password" type="password"/>
+            <input id = "SQ" className="inputsecuritycreate" placeholder="Enter Security Question" type="text"/>
+            <p className="texttitlecreate">Welcome!</p>
+            <input id = "SA" className="inputanscreate" placeholder="Answer" type="text"/>
+            <button className="signupcreate" onClick={signUp}>Sign Up</button>
+            <p className="textlogincreate">Already have a Account ? <Link to = "/login">Login</Link></p>
         </div>
-        <input id ="firstName" className="_input _input-1" placeholder="First Name" type="text"/>
-        <input id = "lastName" className="_input _input-2" placeholder="Last Name" type="text"/>
-        <input id = "emailId" className="_input _input-3" placeholder="Email Address" type="email"/>
-        <input id = "userName" className="_input _input-4" placeholder="User Name" type="text"/>
-        <input id = "password" className="_input _input-6" placeholder="Password" type="password"/>
-        <input id = "rePass" className="_input _input-9" placeholder="Re-Enter Password" type="password"/>
-        <input id = "SQ" className="_input _input-12" placeholder="Enter Security Question" type="text"/>
-        <p className="text text-2">Welcome!</p>
-        <input id = "SA" className="_input _input-18" placeholder="Answer" type="text"/>
-        <button className="_button _button-4" onClick={signUp}>Sign Up</button>
-        <Link className="text text-5" to="/login" >Already have a Account ? </Link>
     </div>
 );
 
