@@ -57,8 +57,12 @@ function reset(){
 }
 
 function load(){
+    if(document.cookie.indexOf("securityQuestion") === -1){
+        window.location.replace("/login");
+    }
     let user;
     user = document.cookie.split(';');
+
     document.getElementById("Q").value = user[1].substring(user[1].indexOf('=') + 1);
 }
 export default forgot;

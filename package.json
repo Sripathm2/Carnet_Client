@@ -11,7 +11,10 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
-    "react-bootstrap": "^0.32.4"
+    "draft-js": "^0.10.5",
+    "react-draft-wysiwyg": "^1.12.13",
+    "draftjs-to-html": "^0.8.4",
+    "html-to-draftjs": "^1.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

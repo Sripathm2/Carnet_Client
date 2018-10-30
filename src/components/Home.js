@@ -1,7 +1,6 @@
 import React from 'react';
 import '../css/landing.css';
 import '../css/bootstrap.css';
-import axios from 'axios';
 import share from '../res/share.jpg';
 import educate from '../res/educate.jpg';
 import create from '../res/create.jpg';
