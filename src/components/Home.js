@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import '../css/landing.css';
 import '../css/bootstrap.css';
 import share from '../res/share.jpg';
