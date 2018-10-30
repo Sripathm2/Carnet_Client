@@ -1,9 +1,10 @@
 import React from 'react';
-//import '../css/landing.css';
-//import '../css/bootstrap.css';
-//import '../css/bootstrap-grid.css';
+import '../css/landing.css';
+import '../css/bootstrap.css';
 import axios from 'axios';
-
+import share from '../res/share.jpg';
+import educate from '../res/educate.jpg';
+import create from '../res/create.jpg';
 
 const Home = () => (
     <div className="App">
@@ -70,18 +71,17 @@ const Home = () => (
                 <div className="row">
                     <div className="col-sm">
                         <h4>Create</h4>
-
-
+                        <img src={create} alt="create"/>
                         <p>Create online notebooks and pages within the notebook.</p>
                     </div>
                     <div className="col-sm">
                         <h4>Share</h4>
-
+                        <img src={share} alt="share"/>
                         <p>Share the notebooks with other users or keep them private.</p>
                     </div>
                     <div className="col-sm">
                         <h4>Educate</h4>
-
+                        <img src={educate} alt="educate"/>
                         <p>Help educate users around the world through this application.</p>
                     </div>
                 </div>

@@ -11,13 +11,13 @@ const login = () => (
     <div className="App body page-index clearfix">
         <div class="container12132332e"></div>
         <div class="container2323">
-            <img src={logo} alt="logo"/>
+            <img className="logo" src={logo} alt="logo"/>
         </div>
         <input id="username" className="_input _input-13" placeholder="Username" type="text"/>
         <input id="password" className="_input _input-16" placeholder="Password" type="password"/>
         <button className="_button _button-2" onClick={enter}>Login</button>
         <p className="text text-3">Forgot Password? <a onClick={forgotPassword}>Click Here</a></p>
-        <Link to="/create_user" >New to Carnet? </Link>
+        <Link classname="text text-32" to="/create_user" >New to Carnet? </Link>
     </div>
 );
 
