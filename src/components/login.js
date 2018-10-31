@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 
 
 const login = () => (
+    load(),
     <div className="App body page-index clearfix">
         <div className="containermainlogin clearfix">
             <div className="containerlogologin"></div>
@@ -18,6 +19,13 @@ const login = () => (
         </div>
     </div>
 );
+
+function load(){
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "notebookID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "data=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "pageNum=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
 
 function forgotPassword(){
     let userdata = {};
