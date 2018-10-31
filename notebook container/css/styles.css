@@ -1,0 +1,116 @@
+body {
+  background-color: rgb(29, 72, 140);
+  font: 400 1em/1.38 Helvetica;
+  color: rgb(0, 0, 0);
+}
+
+.containercommentnotebook {
+  float: left;
+  width: 11.6183659217%;
+  height: 42px;
+  margin: 13px 0 0 11.21683%;
+  background-image: url('../images/comment.JPG');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.containerdislikelogonotebook {
+  float: left;
+  width: 11.6183659217%;
+  height: 42px;
+  margin: 13px 0 0 3.40433%;
+  background-image: url('../images/dislike.JPG');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.containerldcnotebook {
+  float: left;
+  width: 37.2916666666%;
+  height: 76px;
+  margin: 19px 0 0 0.72265625%;
+}
+
+.containerlikelogonotebook {
+  float: left;
+  width: 11.6183659217%;
+  height: 42px;
+  margin: 13px 0 0 1.67598%;
+  background-image: url('../images/like.JPG');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.containermainnotebook {
+  float: left;
+  width: 80%;
+  height: 107px;
+  margin: 57px 0 0 10%;
+  background-color: rgb(255, 255, 255);
+}
+
+.containermainnotebook:hover {
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  background-color: rgb(222, 222, 222);
+}
+
+.containernameownernotebook {
+  float: left;
+  width: 59.4791666666%;
+  height: 87px;
+  margin: 14px 0 0 0.8317099999%;
+}
+
+.containersubscribenotebook {
+  float: left;
+  width: 11.6183659217%;
+  height: 42px;
+  margin: 13px 0 0 2.67982%;
+  background-image: url('../images/notify.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.textdislikenumnotebook {
+  float: left;
+  width: 13.6304120111%;
+  min-height: 36px;
+  margin: 19px 0 0 3.24721%;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}
+
+.textlikenumnotebook {
+  float: left;
+  width: 13.6304120111%;
+  min-height: 36px;
+  margin: 19px 0 0 2.67982%;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}
+
+.textnamenotebook {
+  float: left;
+  width: 96.1799474605%;
+  min-height: 38px;
+  margin: 5px 0 0 2.43816%;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}
+
+.textownernotebook {
+  float: left;
+  clear: both;
+  width: 96.1799474605%;
+  min-height: 38px;
+  margin-left: 2.43816%;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}
