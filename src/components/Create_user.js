@@ -51,6 +51,7 @@ function signUp() {
 
         })
         .catch(function (error) {
+            alert("Error: Please check the following: \n 1)Username is already taken \n 2)The password entered does not fulfill all the rules \n 3) The email address is not valid");
             console.log(error + '1');
         });
 }

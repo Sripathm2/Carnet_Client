@@ -128,11 +128,13 @@ function feedback(){
         }
     })
         .then(function (response) {
+            alert("Feedback submitted, Thank You!");
             console.log(response.data);
             window.location.replace("/");
 
         })
         .catch(function (error) {
+            alert("Error: Feedback was not submitted please try again!");
             console.log(error + '1');
         });
 }

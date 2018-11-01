@@ -50,7 +50,8 @@ function forgotPassword(){
 
         })
         .catch(function (error) {
-            alert(error);
+            alert("Please Enter your username");
+            console.log(error);
         });
 }
 
@@ -71,6 +72,7 @@ function enter(){
             window.location.replace('/dashboard');
         })
         .catch(function (error) {
+            alert("Error:Please Check your username or Password");
             console.log(error);
         });
 }

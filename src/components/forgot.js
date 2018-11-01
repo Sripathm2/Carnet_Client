@@ -49,7 +49,7 @@ function reset(){
             window.location.replace("/login");
         })
         .catch(function (error) {
-            alert('incorrect data please check.')
+            alert("Error: The information entered is incorrect");
         });
 }
 
