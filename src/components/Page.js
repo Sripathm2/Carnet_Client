@@ -44,6 +44,11 @@ class page extends Component {
 function pageChange(num, data1){
     data1 = data1.replace("nbps;"," ");
 
+    if(num+pageNum-1 < 0){
+        alert('first page');
+        return;
+    }
+
     axios({
         method:'get',
         url:'https://carnet-api.herokuapp.com/notebook/Notebook?token='+token + '&notebookId=' + notebookID,
@@ -96,17 +101,7 @@ function pageChange(num, data1){
 function loadData(){
 
     if(document.cookie.indexOf("notebookID") === -1){
-        let user;
-        user = document.cookie.split(';');
-        token = user[0].substring(6);
-        notebookID = 'ba8ee050-fc73-4c2a-9ca8-eec203c4c5d0';
-        pageNum = 1;
-        data = '<p>Hey this <strong>editor</strong> rocks 😀</p>';
-        document.cookie = "token= " + token + "; path=/;";
-        document.cookie = "notebookID= " + notebookID + "; path=/;";
-        document.cookie = "pageNum= " + pageNum.toString() + "; path=/;";
-        document.cookie = "data= " + data + "; path=/;";
-           // window.location.replace("/dashboard");
+        window.location.replace("/dashboard");
     }
     else {
         let user;
@@ -124,24 +119,42 @@ function loadData(){
 }
 
 function setData(data1){
-    data[pageNum-1] = data1;
-
-    let finalData = '';
-
-    for(let i=0;i<data.length;i++){
-        finalData += data[i] + '||****||';
-    }
+    data1 = data1.replace("nbps;"," ");
 
     axios({
-        method:'post',
-        url:'https://carnet-api.herokuapp.com/notebook/updateNotebook?token='+token,
-        data:{
-            notebookId:notebookID,
-            data:finalData,
-        }
+        method:'get',
+        url:'https://carnet-api.herokuapp.com/notebook/Notebook?token='+token + '&notebookId=' + notebookID,
     })
         .then(function (response) {
-            window.location.replace("/dashboard");
+            let data = response.data.data.split("||****||");
+            if(data[pageNum-1] === 'undefined'){
+                data.push(' ');
+            }
+            data[pageNum-1] = data1;
+
+            let finalData = '';
+
+            for(let i=0;i<data.length;i++){
+                finalData += data[i] + '||****||';
+            }
+
+            axios({
+                method:'post',
+                url:'https://carnet-api.herokuapp.com/notebook/updateNotebook?token='+token,
+                data:{
+                    notebookId:notebookID,
+                    data:finalData,
+                }
+            })
+                .then(function (response) {
+                    document.cookie = "notebookID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    document.cookie = "data=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    document.cookie = "pageNum=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    window.location.replace("/dashboard");
+                })
+                .catch(function (error) {
+                    console.log(error + '1');
+                });
         })
         .catch(function (error) {
             console.log(error + '1');

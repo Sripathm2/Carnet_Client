@@ -9,7 +9,7 @@ body {
   width: 11.6183659217%;
   height: 42px;
   margin: 13px 0 0 11.21683%;
-  background-image: url('../images/comment.JPG');
+  background-image: url('../res/comment.JPG');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
@@ -20,7 +20,7 @@ body {
   width: 11.6183659217%;
   height: 42px;
   margin: 13px 0 0 3.40433%;
-  background-image: url('../images/dislike.JPG');
+  background-image: url('../res/dislike.JPG');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
@@ -38,7 +38,7 @@ body {
   width: 11.6183659217%;
   height: 42px;
   margin: 13px 0 0 1.67598%;
-  background-image: url('../images/like.JPG');
+  background-image: url('../res/likes.JPG');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
@@ -72,7 +72,7 @@ body {
   width: 11.6183659217%;
   height: 42px;
   margin: 13px 0 0 2.67982%;
-  background-image: url('../images/notify.png');
+  background-image: url('../res/notify.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
