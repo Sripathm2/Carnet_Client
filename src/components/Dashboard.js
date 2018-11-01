@@ -158,13 +158,13 @@ function setNotebooks(notebooks){
         let divInnerBottomlike = document.createElement('div');
         divInnerBottomlike.id = 'divInnerBottomlike' + j;
         divInnerBottomlike.className = 'containerlikelogonotebook';
-        divInnerBottomlike.onclick = ()=>like(j, 1, 0, notebooks[j].comment);
+        divInnerBottomlike.onclick = ()=>like(j, '1', '0', notebooks[j].comment);
 
 
         let divInnerBottomdislike = document.createElement('div');
         divInnerBottomdislike.id = 'divInnerBottomdislike' + j;
         divInnerBottomdislike.className = 'containerdislikelogonotebook';
-        divInnerBottomdislike.onclick = ()=>like(j,0, 1, '');
+        divInnerBottomdislike.onclick = ()=>like(j,'0', '1', '');
 
         let divInnerBottomLikenum = document.createElement('p');
         divInnerBottomLikenum.id = 'divInnerBottomLikenum' + j;
@@ -184,7 +184,7 @@ function setNotebooks(notebooks){
         let divInnerBottomComment = document.createElement('div');
         divInnerBottomComment.id = 'divInnerBottomComment' + j;
         divInnerBottomComment.className = 'containercommentnotebook';
-        divInnerBottomComment.onclick = ()=>commentCreate(j, 0, 0, notebooks[j].comment);
+        divInnerBottomComment.onclick = ()=>commentCreate(j, '0', '0', notebooks[j].comment);
 
         let divInnerBottomCommentinput = document.createElement('input');
         divInnerBottomCommentinput.type = 'text';
