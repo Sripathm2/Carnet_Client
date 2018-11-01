@@ -20,6 +20,8 @@ const Dashboard = () =>(
             <label className="textname" id = "name">Name of the User</label>
             <label className="textsubs" id = "subscriber">Subscribers: NaN</label>
             <label className="textemail" id = "email">Email Address of the User</label>
+            <input id="create_field" className="input-create" type="text"  defaultValue="P: NP:"/>
+            <button onClick={createnotebook} className="button-create">create</button>
         </div>
         <div className="containermain clearfix">
             <button className="_button _button-2">Notebook</button>
@@ -28,6 +30,32 @@ const Dashboard = () =>(
         </div>
     </div>
 );
+
+function createnotebook(){
+    let notebookName = document.getElementById("create_field").value.replace(' ','');
+    let publicName = notebookName.substring(2,notebookName.indexOf('NP:'));
+    let privatename = notebookName.substring(notebookName.indexOf('NP:')+3);
+    let finalName = '';
+    if(publicName.length>1){
+        finalName=publicName;
+    } else {
+        finalName = "(private)" + privatename;
+    }
+    axios({
+        method:'post',
+        url:'https://carnet-api.herokuapp.com/notebook/createNotebook?token=' + token + '&name='+finalName,
+    })
+        .then(function (response) {
+            console.log(response.data);
+            alert('done');
+            window.location.replace("/dashboard");
+
+        })
+        .catch(function (error) {
+            console.log(error + '1');
+        });
+
+}
 
 function load(){
     if(document.cookie.indexOf("token") === -1){
@@ -68,9 +96,21 @@ function load(){
 function searchnotebook(){
     let find = document.getElementById("search_field").value.replace(' ','');
     let username = find.substring(2,find.indexOf('N:'));
-    let name = find.substring(find.indexOf('N:')+1);
+    let name = find.substring(find.indexOf('N:')+2);
     if(username.length > 1){
         let url='https://carnet-api.herokuapp.com/notebook/search_userName?token='+token + "&userName="+username;
+        axios({
+            method:'get',
+            url:url,
+        })
+            .then(function (response) {
+                setNotebooks(response.data.data);
+            })
+            .catch(function (error) {
+                alert(error);
+            });
+    } else {
+        let url='https://carnet-api.herokuapp.com/notebook/search_name?token='+token + "&name="+name;
         axios({
             method:'get',
             url:url,
@@ -118,13 +158,13 @@ function setNotebooks(notebooks){
         let divInnerBottomlike = document.createElement('div');
         divInnerBottomlike.id = 'divInnerBottomlike' + j;
         divInnerBottomlike.className = 'containerlikelogonotebook';
-        divInnerBottomlike.onclick = ()=>like(j,(parseInt(notebooks[j].likes)+1).toString(), notebooks[j].dislikes, notebooks[j].comment);
+        divInnerBottomlike.onclick = ()=>like(j, 1, 0, notebooks[j].comment);
 
 
         let divInnerBottomdislike = document.createElement('div');
         divInnerBottomdislike.id = 'divInnerBottomdislike' + j;
         divInnerBottomdislike.className = 'containerdislikelogonotebook';
-        divInnerBottomdislike.onclick = ()=>like(j,notebooks[j].likes, (parseInt(notebooks[j].dislikes)+1).toString(), notebooks[j].comment);
+        divInnerBottomdislike.onclick = ()=>like(j,0, 1, '');
 
         let divInnerBottomLikenum = document.createElement('p');
         divInnerBottomLikenum.id = 'divInnerBottomLikenum' + j;
@@ -142,8 +182,20 @@ function setNotebooks(notebooks){
         divInnerBottomsub.onclick = ()=>sub(j);
 
         let divInnerBottomComment = document.createElement('div');
-        divInnerBottomsub.id = 'divInnerBottomsub' + j;
+        divInnerBottomComment.id = 'divInnerBottomComment' + j;
         divInnerBottomComment.className = 'containercommentnotebook';
+        divInnerBottomComment.onclick = ()=>commentCreate(j, 0, 0, notebooks[j].comment);
+
+        let divInnerBottomCommentinput = document.createElement('input');
+        divInnerBottomCommentinput.type = 'text';
+        divInnerBottomCommentinput.id = 'divInnerBottomCommentinput'+j;
+
+        let divInnerBottomCommentinputsubmit = document.createElement('button');
+        divInnerBottomCommentinputsubmit.type = 'button';
+        divInnerBottomCommentinputsubmit.innerHTML = 'comment submit';
+        divInnerBottomCommentinputsubmit.id = 'divInnerBottomCommentinputsubmit'+j;
+        divInnerBottomCommentinputsubmit.onclick = ()=>commentSubmit(j, 0, 0, '');
+
 
         divInnerBottom.appendChild(divInnerBottomlike);
         divInnerBottom.appendChild(divInnerBottomdislike);
@@ -151,6 +203,8 @@ function setNotebooks(notebooks){
         divInnerBottom.appendChild(divInnerBottomDisLikenum);
         divInnerBottom.appendChild(divInnerBottomsub);
         divInnerBottom.appendChild(divInnerBottomComment);
+        divInnerBottom.appendChild(divInnerBottomCommentinput);
+        divInnerBottom.appendChild(divInnerBottomCommentinputsubmit);
 
         div.appendChild(divInnerHead);
         div.appendChild(divInnerBottom);
@@ -218,6 +272,61 @@ function like(input, like, dislike, comments){
             notebookId:notebookID,
             like:like,
             dislike:dislike,
+            comment:comments,
+        }
+    })
+        .then(function (response) {
+            console.log(response.data);
+            document.getElementById('divInnerBottomLikenum'+input).innerHTML = like;
+            document.getElementById('divInnerBottomDisLikenum'+input).innerHTML = dislike;
+        })
+        .catch(function (error) {
+            console.log(error + '1');
+        });
+
+}
+
+function commentCreate(input, like, dislike, comments){
+    let table = document.createElement("TABLE");
+    comments = comments.split('--');
+    for(let j=0; j<comments.length; j++){
+        alert(comments[j]);
+        comments[j] = comments[j].replace(' ','');
+        if(comments[j].substring(comments[j].indexOf(':')+1).length < 3){
+            continue;
+        }
+        alert('here');
+        let row = document.createElement("tr");
+        let cell = document.createElement("th");
+        cell.innerHTML = comments[j];
+        row.appendChild(cell);
+        table.appendChild(row);
+    }
+    document.getElementById('div'+input).appendChild(table);
+
+}
+
+function commentSubmit(input, like, dislike, comments){
+    let notebookIddiv = document.getElementById('divInnerHeadOwnName'+input).innerHTML;
+    let notebookID = notebookIddiv.substring(notebookIddiv.indexOf("--") + 2);
+
+
+    comments = document.getElementById('divInnerBottomCommentinput'+input).value;
+
+    alert('heer');
+
+    if(comments.length < 1){
+        return;
+    }
+
+
+    axios({
+        method:'post',
+        url:'https://carnet-api.herokuapp.com/notebook/update?token='+token,
+        data:{
+            notebookId:notebookID,
+            like:'0',
+            dislike:'0',
             comment:comments,
         }
     })

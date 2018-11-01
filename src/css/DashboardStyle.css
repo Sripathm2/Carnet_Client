@@ -170,6 +170,30 @@ body {
     color: rgb(29, 72, 140);
 }
 
+.button-create {
+    float: left;
+    clear: both;
+    width: 90.2127659574%;
+    min-height: 35px;
+    margin-left: 5.95745%;
+    font-size: 1.455em;
+    text-align: center;
+    color: rgb(29, 72, 140);
+    background-color: #a6adb4;
+}
+
+.input-create {
+    float: left;
+    clear: both;
+    width: 90.2127659574%;
+    min-height: 35px;
+    margin-left: 5.95745%;
+    font-size: 1.455em;
+    text-align: center;
+    color: rgb(29, 72, 140);
+    background-color: #f2fff3;
+}
+
 .textname {
     float: left;
     clear: both;
