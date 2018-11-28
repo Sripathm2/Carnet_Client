@@ -201,7 +201,7 @@ function setNotebooks(notebooks){
         divNotebookRenameButton.type = 'button';
         divNotebookRenameButton.innerHTML = 'rename';
         divNotebookRenameButton.id = 'divNotebookRenameButton'+j;
-        divNotebookRenameButton.onclick = ()=> renameNotebook();
+        divNotebookRenameButton.onclick = ()=> renameNotebook(j);
 
 
         divInnerBottom.appendChild(divInnerBottomlike);
