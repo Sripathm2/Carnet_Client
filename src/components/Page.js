@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
-import {convertFromRaw, convertToRaw, EditorState} from 'draft-js';    
 import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import htmlToDraft from 'html-to-draftjs';
-import "../../node_modules/draft-js-image-plugin/lib/plugin.css"
 import axios from "axios";
-
 
 let token = '';
 let notebookID = '';
@@ -15,28 +12,6 @@ let pageNum = '';
 let data = [];
 
 class page extends Component {
-    uploadCallback(file) {
-
-        return new Promise(
-          (resolve, reject) => {
-            var reader=new FileReader();
-    
-            reader.onloadend = function() {
-              Meteor.call('fileStorage.uploadFile',reader.result,file.name,file.type,(err,response)=>{
-                  console.log(response)
-                 if(err){
-                   reject(err)
-                 }
-    
-                 resolve({ data: { link: response.data.url } });
-              })
-            }
-    
-            reader.readAsDataURL(file);
-          }
-        );
-      }
-
     state = {
         editorState: loadData(),
     };
@@ -49,26 +24,12 @@ class page extends Component {
 
     render() {
         const {editorState} = this.state;
-        const config={
-      image: { uploadCallback: this.uploadCallback }
-    }
-
-    return (
-      <div className="container-fluid">
-        <Editor toolbar={ config } />
-      </div>
-    )
         return (
             <div className="App">
-                <button onClick={()=>pageChange(1, draftToHtml(convertToRaw(editorState.getCurrentContent())))}>NextPage</button>
-                <button onClick={()=>pageChange(-1, draftToHtml(convertToRaw(editorState.getCurrentContent())))}>PrevPage</button>
+                <button onClick={()=>pageChange(1, draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Next Page</button>
+                <button onClick={()=>pageChange(-1, draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Prev Page</button>
                 <button onClick={() => setData(draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Done
                 </button>
-                <div>
-                    <label for="file">PDF to Image</label>
-                    <input type="file" name="foo" placeholder = "PdfToImage" accept="application/pdf"/>
-
-                </div>
                 <Editor
                     editorState={editorState}
                     wrapperClassName="demo-wrapper"
@@ -79,9 +40,6 @@ class page extends Component {
         );
     }
 }
-
-
-
 
 function pageChange(num, data1){
     data1 = data1.replace("nbps;"," ");
@@ -202,6 +160,5 @@ function setData(data1){
             console.log(error + '1');
         });
 }
-
 
 export default page;
