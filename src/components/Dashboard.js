@@ -27,12 +27,39 @@ const Dashboard = () =>(
              </div>
         </div>
         <div className="containermain clearfix">
-            <button className="_button _button-2">Notebook</button>
-            <button className="_button _button-3">Notifications</button>
+            <label className = "textname" >Notebook</label>
+            <input id="NotebookId_field" className="_input" type="text" placeholder='Notebook ID'/>
+            <button onClick={access} className="_button">Open</button>
             <div id="notebookContainer" className="containernotebook"></div>
         </div>
     </div>
 );
+
+function access(){
+    let notebookID = document.getElementById('NotebookId_field').value;
+    console.log(notebookID);
+
+    axios({
+        method:'get',
+        url:'https://carnet-api.herokuapp.com/notebook/Notebook?token='+token + '&notebookId=' + notebookID,
+    })
+        .then(function (response) {
+            let data = response.data.data.split("||****||");
+
+            document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "notebookID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "data=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "pageNum=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "token= " + token + "; path=/;";
+            document.cookie = "notebookID= " + notebookID + "; path=/;";
+            document.cookie = "pageNum= " + (1).toString() + "; path=/;";
+            document.cookie = "data= " + data[0] + "; path=/;";
+            window.location.replace("/page");
+        })
+        .catch(function (error) {
+            console.log(error + '1');
+        });
+}
 
 function createnotebook(){
     let notebookName = document.getElementById("create_field").value.replace(' ','');
@@ -115,7 +142,7 @@ function searchnotebook(){
             .catch(function (error) {
                 alert("Notebook does not exist");
             });
-    } 
+    }
     else if(name.lenght > 1) {
         let url='https://carnet-api.herokuapp.com/notebook/search_name?token='+token + "&name="+name;
         axios({
@@ -141,13 +168,13 @@ function searchnotebook(){
                         if(response.data.data[i].name.indexOf(folder) > -1){
                             processdata.push(response.data.data[i]);
                         }
-                    }                    
+                    }
                     setNotebooks(processdata);
                 })
                 .catch(function (error) {
                     alert("Username does not exist");
                 });
-            
+
     }
 }
 
@@ -222,14 +249,19 @@ function setNotebooks(notebooks){
         divInnerBottomCommentinputsubmit.innerHTML = 'comment submit';
         divInnerBottomCommentinputsubmit.id = 'divInnerBottomCommentinputsubmit'+j;
         divInnerBottomCommentinputsubmit.onclick = ()=>commentSubmit(j, 0, 0, '');
-        
+
         // Rename Button
         let divNotebookRenameButton = document.createElement('button');
         divNotebookRenameButton.type = 'button';
-        divNotebookRenameButton.innerHTML = 'rename';
+        divNotebookRenameButton.innerHTML = '&nbsp;Rename';
         divNotebookRenameButton.id = 'divNotebookRenameButton'+j;
         divNotebookRenameButton.onclick = ()=> renameNotebook(j);
 
+        let divNotebookAccessButton = document.createElement('button');
+        divNotebookAccessButton.type = 'button';
+        divNotebookAccessButton.innerHTML = '&nbsp;Share';
+        divNotebookAccessButton.id = 'divNotebookAccessButton'+j;
+        divNotebookAccessButton.onclick = ()=> ShareNotebook(j);
 
         divInnerBottom.appendChild(divInnerBottomlike);
         divInnerBottom.appendChild(divInnerBottomdislike);
@@ -240,6 +272,7 @@ function setNotebooks(notebooks){
         divInnerBottom.appendChild(divInnerBottomCommentinput);
         divInnerBottom.appendChild(divInnerBottomCommentinputsubmit);
         divInnerBottom.appendChild(divNotebookRenameButton);
+        divInnerBottom.appendChild(divNotebookAccessButton);
         div.appendChild(divInnerHead);
         div.appendChild(divInnerBottom);
         document.getElementById('notebookContainer').appendChild(div);
@@ -251,7 +284,7 @@ function renameNotebook(input) {
 	let notebookIddiv = document.getElementById('divInnerHeadOwnName'+input).innerHTML;
     let notebookID = notebookIddiv.substring(notebookIddiv.indexOf("--") + 2);
 	let naam = document.getElementById('divInnerBottomCommentinput'+input).value
-   
+
     axios({
         method:'post',
         url:'https://carnet-api.herokuapp.com/notebook/updateNameNotebook?token='+token,
@@ -267,7 +300,6 @@ function renameNotebook(input) {
         .catch(function (error) {
             console.log(error);
         });
-
 }
 
 function openNotebook(input){
@@ -398,22 +430,49 @@ function commentSubmit(input, like, dislike, comments){
 }
 
 function setNotification(notifications){
-    let notify = notifications.split("--:--")
+    let notify = notifications.split("--:--");
+
      for(let j=0; j<notify.length; j++){
+
         let div = document.createElement('div');
         div.id = 'div'+j;
         div.className = 'containerNotify clearfix';
-         let divInnerHead = document.createElement('div');
+
+        let divInnerHead = document.createElement('div');
         divInnerHead.id = 'divInnerHead'+j;
-        divInnerHead.className = 'containerNotify clearfix'
-         let divInnerHeadName = document.createElement('p');
+        divInnerHead.className = 'containerNotify clearfix';
+
+        let divInnerHeadName = document.createElement('p');
         divInnerHeadName.id = 'divInnerHeadName'+j;
         divInnerHeadName.className = 'textnamenotebook';
         divInnerHeadName.innerHTML = notify[j];
-         divInnerHead.appendChild(divInnerHeadName);
+
+        divInnerHead.appendChild(divInnerHeadName);
         div.appendChild(divInnerHead);
-         document.getElementById('notificationsContainer').appendChild(div);
+        document.getElementById('notificationsContainer').appendChild(div);
     }
+}
+
+function ShareNotebook(input){
+    let notebookIddiv = document.getElementById('divInnerHeadOwnName'+input).innerHTML;
+    let notebookID = notebookIddiv.substring(notebookIddiv.indexOf("--") + 2);
+    let naam = document.getElementById('divInnerBottomCommentinput'+input).value
+
+    axios({
+        method:'post',
+        url:'https://carnet-api.herokuapp.com/notebook/accessNotebook?token='+token,
+        data:{
+            notebookId:notebookID,
+            name: naam,
+        }
+    })
+        .then(function (response) {
+            console.log(response.data);
+            window.location.reload();
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }
 
 export default Dashboard;
