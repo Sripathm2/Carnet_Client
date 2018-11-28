@@ -195,6 +195,13 @@ function setNotebooks(notebooks){
         divInnerBottomCommentinputsubmit.innerHTML = 'comment submit';
         divInnerBottomCommentinputsubmit.id = 'divInnerBottomCommentinputsubmit'+j;
         divInnerBottomCommentinputsubmit.onclick = ()=>commentSubmit(j, 0, 0, '');
+        
+        // Rename Button
+        let divNotebookRenameButton = document.createElement('button');
+        divNotebookRenameButton.type = 'button';
+        divNotebookRenameButton.innerHTML = 'rename';
+        divNotebookRenameButton.id = 'divNotebookRenameButton'+j;
+        divNotebookRenameButton.onclick = ()=> renameNotebook();
 
 
         divInnerBottom.appendChild(divInnerBottomlike);
@@ -205,13 +212,40 @@ function setNotebooks(notebooks){
         divInnerBottom.appendChild(divInnerBottomComment);
         divInnerBottom.appendChild(divInnerBottomCommentinput);
         divInnerBottom.appendChild(divInnerBottomCommentinputsubmit);
-
+        divInnerBottom.appendChild(divNotebookRenameButton);
         div.appendChild(divInnerHead);
         div.appendChild(divInnerBottom);
-
         document.getElementById('notebookContainer').appendChild(div);
 
     }
+}
+
+ // Rename Notebook
+function renameNotebook(input) {
+	let notebookIddiv = document.getElementById('divInnerHeadOwnName'+input).innerHTML;
+    let notebookID = notebookIddiv.substring(notebookIddiv.indexOf("--") + 2);
+	let naam = document.getElementById('divNotebookRenameButton'+input).innerHTML;
+    alert('heer');
+    if(comments.length < 1){
+        return;
+    }
+    axios({
+        method:'post',
+        url:'https://carnet-api.herokuapp.com/notebook/updateNameNotebook?token='+token,
+        data:{
+            notebookId:notebookID,
+            name: naam,
+        }
+    })
+        .then(function (response) {
+            console.log(response.data);
+            document.getElementById('divInnerBottomLikenum'+input).innerHTML = like;
+            document.getElementById('divInnerBottomDisLikenum'+input).innerHTML = dislike;
+        })
+        .catch(function (error) {
+            console.log(error + '1');
+        });
+
 }
 
 function openNotebook(input){
