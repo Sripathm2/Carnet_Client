@@ -129,7 +129,7 @@ function searchnotebook(){
                 alert("Notebook does not exist");
             });
     }
-    else if(folder.lenght > 1) {
+    else {
         let url='https://carnet-api.herokuapp.com/notebook/search?token='+token;
         axios({
                 method:'get',
@@ -149,10 +149,6 @@ function searchnotebook(){
                 });
             
     }
-    else{
-         window.location.reload();
-    }
-    
 }
 
 function setNotebooks(notebooks){
