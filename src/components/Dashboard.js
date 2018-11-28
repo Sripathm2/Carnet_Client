@@ -223,11 +223,8 @@ function setNotebooks(notebooks){
 function renameNotebook(input) {
 	let notebookIddiv = document.getElementById('divInnerHeadOwnName'+input).innerHTML;
     let notebookID = notebookIddiv.substring(notebookIddiv.indexOf("--") + 2);
-	let naam = document.getElementById('divInnerBottomCommentinput'+input).value;
-    alert('heer');
-    if(comments.length < 1){
-        return;
-    }
+	let naam = document.getElementById('divInnerBottomCommentinput'+input).value
+   
     axios({
         method:'post',
         url:'https://carnet-api.herokuapp.com/notebook/updateNameNotebook?token='+token,
@@ -238,11 +235,9 @@ function renameNotebook(input) {
     })
         .then(function (response) {
             console.log(response.data);
-            document.getElementById('divInnerBottomLikenum'+input).innerHTML = like;
-            document.getElementById('divInnerBottomDisLikenum'+input).innerHTML = dislike;
         })
         .catch(function (error) {
-            console.log(error + '1');
+            console.log(error);
         });
 
 }
