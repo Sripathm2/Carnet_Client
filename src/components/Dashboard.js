@@ -130,7 +130,7 @@ function searchnotebook(){
             });
     }
     else if(folder.lenght > 1) {
-        let url='https://carnet-api.herokuapp.com/notebook/search_userName?token='+token + "&userName="+response.data.username;
+        let url='https://carnet-api.herokuapp.com/notebook/search?token='+token;
         axios({
                 method:'get',
                 url:url,
