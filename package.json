@@ -14,7 +14,8 @@
     "draft-js": "^0.10.5",
     "react-draft-wysiwyg": "^1.12.13",
     "draftjs-to-html": "^0.8.4",
-    "html-to-draftjs": "^1.4.0"
+    "html-to-draftjs": "^1.4.0",
+    "react-pdf": "4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

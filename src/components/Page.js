@@ -5,7 +5,8 @@ import draftToHtml from 'draftjs-to-html';
 import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import htmlToDraft from 'html-to-draftjs';
 import axios from "axios";
-
+import {Document, Page} from 'react-pdf';
+import file from '/Users/pooja/Desktop/Carnet_Client/src/components/somefile.pdf'
 let token = '';
 let notebookID = '';
 let pageNum = '';
@@ -14,30 +15,73 @@ let data = [];
 class page extends Component {
     state = {
         editorState: loadData(),
+        numPages: null,
+        pageNumber: 1,
     };
-
+    constructor(props) {
+        super(props);
+        this.state = {value: ''};
+    
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
+    handleChange(event) {
+        this.setState({value: event.target.value});
+      }
+    
+    handleSubmit(event) {
+        alert('A file was submitted: ' + this.state.value);
+        
+        event.preventDefault();
+    }
+    
     onEditorStateChange: Function = (editorState) => {
         this.setState({
             editorState,
         });
+        console.log("printing")
     };
-
+    onDocumentLoadSuccess = ({ numPages }) => {
+        this.setState({ numPages });
+      };
+    
     render() {
-        const {editorState} = this.state;
+        const {editorState, pageNumber, numPages} = this.state;
+
         return (
             <div className="App">
                 <button onClick={()=>pageChange(1, draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Next Page</button>
                 <button onClick={()=>pageChange(-1, draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Prev Page</button>
                 <button onClick={() => setData(draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Done
                 </button>
+                <hr></hr>
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                    PDF:
+                    <input name="userfile"  accept="application/pdf" type="file" value={this.state.value} onChange={this.handleChange} />
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
+             
+                <Document
+                    file={file}
+                    onLoadSuccess={this.onDocumentLoadSuccess}
+                    >
+                <Page pageNumber={1} />
+                </Document>
+                <p>Page {pageNumber} of {numPages}</p>
                 <Editor
                     editorState={editorState}
                     wrapperClassName="demo-wrapper"
                     editorClassName="demo-editor"
                     onEditorStateChange={this.onEditorStateChange}
                 />
+                
             </div>
+           
         );
+ 
+        
     }
 }
 
