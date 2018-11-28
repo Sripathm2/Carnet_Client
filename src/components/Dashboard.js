@@ -22,6 +22,10 @@ const Dashboard = () =>(
             <label className="textemail" id = "email">Email Address of the User</label>
             <input id="create_field" className="input-create" type="text"  defaultValue="P: NP:"/>
             <button onClick={createnotebook} className="button-create">create</button>
+            <div id ="notificationsContainer" className="containerNotify">
+                <label className = "textname" id ="Notification">Notifications</label>
+
+            </div>
         </div>
         <div className="containermain clearfix">
             <button className="_button _button-2">Notebook</button>
@@ -76,6 +80,8 @@ function load(){
             document.getElementById("name").innerHTML = response.data.name;
             document.getElementById("subscriber").innerHTML = '0';
             document.getElementById("email").innerHTML = response.data.email;
+            setNotification(response.data.notification);
+            console.log(response.data.notification);
             let url='https://carnet-api.herokuapp.com/notebook/search_userName?token='+token + "&userName="+response.data.username;
             axios({
                 method:'get',
@@ -107,7 +113,7 @@ function searchnotebook(){
                 setNotebooks(response.data.data);
             })
             .catch(function (error) {
-                alert(error);
+                alert("Username does not exist");
             });
     } else {
         let url='https://carnet-api.herokuapp.com/notebook/search_name?token='+token + "&name="+name;
@@ -119,8 +125,32 @@ function searchnotebook(){
                 setNotebooks(response.data.data);
             })
             .catch(function (error) {
-                alert(error);
+                alert("Notebook does not exist");
             });
+    }
+}
+
+function setNotification(notifications){
+    let notify = notifications.split("--:--")
+
+    for(let j=0; j<notify.length; j++){
+        let div = document.createElement('div');
+        div.id = 'div'+j;
+        div.className = 'containerNotify clearfix';
+
+        let divInnerHead = document.createElement('div');
+        divInnerHead.id = 'divInnerHead'+j;
+        divInnerHead.className = 'containerNotify clearfix'
+
+        let divInnerHeadName = document.createElement('p');
+        divInnerHeadName.id = 'divInnerHeadName'+j;
+        divInnerHeadName.className = 'textnamenotebook';
+        divInnerHeadName.innerHTML = notify[j];
+
+        divInnerHead.appendChild(divInnerHeadName);
+        div.appendChild(divInnerHead);
+
+        document.getElementById('notificationsContainer').appendChild(div);
     }
 }
 
