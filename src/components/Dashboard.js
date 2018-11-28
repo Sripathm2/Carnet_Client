@@ -12,7 +12,7 @@ const Dashboard = () =>(
     <div className="App">
         <div className="containerhead clearfix">
             <div className="containerlogo"></div>
-            <input id="search_field" className="_input" type="text"  defaultValue="U: N:"/>
+            <input id="search_field" className="_input" type="text"  defaultValue="U: N: F:"/>
             <button onClick={searchnotebook} className="_button">Search</button>
         </div>
         <div className="containerside clearfix">
@@ -101,7 +101,8 @@ function load(){
 function searchnotebook(){
     let find = document.getElementById("search_field").value.replace(' ','');
     let username = find.substring(2,find.indexOf('N:'));
-    let name = find.substring(find.indexOf('N:')+2);
+    let name = find.substring(find.indexOf('N:')+2, find.indexOf('F:'));
+    let folder = find.substring(find.indexOf('F:')+2);
     if(username.length > 1){
         let url='https://carnet-api.herokuapp.com/notebook/search_userName?token='+token + "&userName="+username;
         axios({
@@ -114,7 +115,8 @@ function searchnotebook(){
             .catch(function (error) {
                 alert("Notebook does not exist");
             });
-    } else {
+    } 
+    else if(name.lenght > 1) {
         let url='https://carnet-api.herokuapp.com/notebook/search_name?token='+token + "&name="+name;
         axios({
             method:'get',
@@ -127,6 +129,30 @@ function searchnotebook(){
                 alert("Notebook does not exist");
             });
     }
+    else if(folder.lenght > 1) {
+        let url='https://carnet-api.herokuapp.com/notebook/search_userName?token='+token + "&userName="+response.data.username;
+        axios({
+                method:'get',
+                url:url,
+            })
+                .then(function (response) {
+                    let processdata = [];
+                    for(let i = 0; i < response.data.data.length; i++){
+                        if(response.data.data[i].name.indexOf(folder) > -1){
+                            processdata.push(response.data.data[i]);
+                        }
+                    }                    
+                    setNotebooks(processdata);
+                })
+                .catch(function (error) {
+                    alert("Username does not exist");
+                });
+            
+    }
+    else{
+         window.location.reload();
+    }
+    
 }
 
 function setNotebooks(notebooks){
