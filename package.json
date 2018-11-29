@@ -16,7 +16,7 @@
     "draftjs-to-html": "^0.8.4",
     "html-to-draftjs": "^1.4.0",
     "react-file-reader": "^1.1.4",
-    "base-64": "^0.1.0"
+    "js-base64": "^2.4.9"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -7,7 +7,7 @@ import htmlToDraft from 'html-to-draftjs';
 import axios from "axios";
 import '../css/Page.css';
 import ReactFileReader from 'react-file-reader';
-import base64 from "base-64";
+import { Base64 } from 'js-base64';
 
 let token = '';
 let notebookID = '';
@@ -31,6 +31,18 @@ class page extends Component {
         document.getElementById("datapdf").src='';
     }
 
+    writeFiles = () => {
+        pdf=document.getElementById("datapdf").src;
+        pdf = pdf.substring(pdf.indexOf(';')+8);
+        let decodedData = Base64.atob(pdf);
+        decodedData = decodedData.replace(pdftext,' ');
+        pdftext = document.getElementById("pdftextdata").value;
+        let finaldecodeData = decodedData.substring(0,decodedData.indexOf(') Tj')) + pdftext + decodedData.substring(decodedData.indexOf(' ) Tj'));
+        let finalencodedData = 'data:application/pdf;base64,' + Base64.btoa(finaldecodeData);
+        pdf = finalencodedData;
+        document.getElementById("datapdf").src=pdf;
+    }
+
     handleFiles = files => {
         document.getElementById("datapdf").src=files.base64;
     }
@@ -42,14 +54,14 @@ class page extends Component {
         if(pdftext.length>1){
             document.getElementById("pdftextdata").value=pdftext;
         }
-        /*if(pdf.length>14 && pdftext.length>1){
-            pdf = pdf.substring(pdf.indexOf(';')+1);
-            let decodedData = base64.decode(pdf);
-            let finaldecodeData = decodedData.substring(0,decodedData.indexOf(') Tj')) + pdftext + decodedData.substring(decodedData.indexOf(') Tj'));
-            let finalencodedData = 'data:application/pdf;' + base64.encode(finaldecodeData);
+        if(pdf.length>14 && pdftext.length>1){
+            pdf = pdf.substring(pdf.indexOf(';')+8);
+            let decodedData = Base64.atob(pdf);
+            let finaldecodeData = decodedData.substring(0,decodedData.indexOf(') Tj')) + pdftext + decodedData.substring(decodedData.indexOf(' ) Tj'));
+            let finalencodedData = 'data:application/pdf;base64,' + Base64.btoa(finaldecodeData);
             pdf = finalencodedData;
             document.getElementById("datapdf").src=pdf;
-        }*/
+        }
     }
 
     render() {
@@ -75,6 +87,7 @@ class page extends Component {
                     <iframe id="datapdf" height="400%" width="100%"/>
                     <textarea id="pdftextdata" rows="4" cols="50">Text to write on pdf</textarea>
                     <button onClick={this.deleteFiles}> Delete pdf </button>
+                    <button onClick={this.writeFiles}> Write on pdf </button>
                 </div>
             </div>
         );
@@ -106,10 +119,15 @@ function pageChange(num, data1){
                 finalData += data[i] + '||****||';
             }
 
-            pdftext = document.getElementById("pdftextdata").value;
             if(document.getElementById("datapdf").src !== undefined){
-              pdf = document.getElementById("datapdf").src;
-              pdf = pdf.substring(pdf.indexOf(';')+1);
+                pdf = document.getElementById("datapdf").src;
+                pdf = pdf.substring(pdf.indexOf(';')+8);
+                let decodedData = Base64.atob(pdf);
+                decodedData = decodedData.replace(pdftext,' ');
+                pdftext = document.getElementById("pdftextdata").value;
+                let finalencodedData = 'data:application/pdf;base64,' + Base64.btoa(decodedData);
+                pdf = finalencodedData;
+                pdf = pdf.substring(pdf.indexOf(';')+1);
             }
             else{
                 pdf = ' ';
@@ -194,8 +212,18 @@ function setData(data1){
                 finalData += data[i] + '||****||';
             }
 
-            pdftext = document.getElementById("pdftextdata").value;
-            pdf = document.getElementById("datapdf").src? pdf = document.getElementById("datapdf").src: ' ';
+            if(document.getElementById("datapdf").src !== undefined){
+                pdf = document.getElementById("datapdf").src;
+                pdf = pdf.substring(pdf.indexOf(';')+8);
+                let decodedData = Base64.atob(pdf);
+                decodedData = decodedData.replace(pdftext,' ');
+                pdftext = document.getElementById("pdftextdata").value;
+                let finalencodedData = 'data:application/pdf;base64,' + Base64.btoa(decodedData);
+                pdf = finalencodedData;
+            }
+            else{
+                pdf = ' ';
+            }
             axios({
                 method:'post',
                 url:'https://carnet-api.herokuapp.com/notebook/updateNotebook?token='+token,
