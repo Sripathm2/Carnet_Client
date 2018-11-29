@@ -16,6 +16,7 @@ let data = [];
 let pdf = '';
 let pdftext = '';
 let pdfcode = '';
+let deletepdffile = false;
 
 class page extends Component {
     state = {
@@ -29,7 +30,8 @@ class page extends Component {
     };
 
     deleteFiles = () => {
-        document.getElementById("datapdf").src=' ';
+        document.getElementById("datapdf").src='  ';
+        deletepdffile = true;
     }
 
     writeFiles = () => {
@@ -66,6 +68,7 @@ class page extends Component {
     handleFiles = files => {
         document.getElementById("datapdf").src=files.base64;
         console.log(files.base64);
+        deletepdffile = false;
     }
 
     componentDidMount() {
@@ -158,7 +161,7 @@ function pageChange(num, data1){
                 finalData += data[i] + '||****||';
             }
 
-            if(document.getElementById("datapdf").src !== undefined && document.getElementById("datapdf").src.length > 14){
+            if(document.getElementById("datapdf").src !== undefined && document.getElementById("datapdf").src.length > 14 && !deletepdffile){
                 pdf = document.getElementById("datapdf").src;
                 pdf = pdf.substring(pdf.indexOf(';')+8);
                 let decodedData = Base64.atob(pdf);
@@ -250,8 +253,9 @@ function setData(data1){
             for(let i=0;i<data.length;i++){
                 finalData += data[i] + '||****||';
             }
+            console.log(document.getElementById("datapdf").src.length);
 
-            if(document.getElementById("datapdf").src !== undefined && document.getElementById("datapdf").src.length > 14){
+            if(document.getElementById("datapdf").src !== undefined && document.getElementById("datapdf").src.length > 14 && !deletepdffile){
                 pdf = document.getElementById("datapdf").src;
                 pdf = pdf.substring(pdf.indexOf(';')+8);
                 let decodedData = Base64.atob(pdf);
