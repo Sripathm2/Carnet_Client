@@ -321,6 +321,8 @@ function openNotebook(input){
             document.cookie = "notebookID= " + notebookID + "; path=/;";
             document.cookie = "pageNum= " + (1).toString() + "; path=/;";
             document.cookie = "data= " + data[0] + "; path=/;";
+            document.cookie = "pdf= " + response.data.pdf + "; path=/;";
+            document.cookie = "pdftext= " + response.data.pdftext + "; path=/;";
             window.location.replace("/page");
         })
         .catch(function (error) {

@@ -6,11 +6,14 @@ import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import htmlToDraft from 'html-to-draftjs';
 import axios from "axios";
 import '../css/Page.css';
+import ReactFileReader from 'react-file-reader';
 
 let token = '';
 let notebookID = '';
 let pageNum = '';
 let data = [];
+let pdf = '';
+let pdftext = '';
 
 class page extends Component {
     state = {
@@ -22,6 +25,10 @@ class page extends Component {
             editorState,
         });
     };
+
+    handleFiles = files => {
+        document.getElementById("datapdf").src=files.base64;
+    }
 
     render() {
         const {editorState} = this.state;
@@ -40,19 +47,17 @@ class page extends Component {
                     />
                 </div>
                 <div className="right-side">
-                    <input type="file" name="pdf" id="fileinput" accept=".pdf">
-                    <button onClick={fileupload}>Done</button>
+                    <ReactFileReader base64={true} handleFiles={this.handleFiles}>
+                        <button className='btn'>Upload</button>
+                    </ReactFileReader>
+                    <iframe id="datapdf" height="400%" width="100%"/>
+                    <textarea id="pdftextdata" rows="4" cols="50">Text to write on pdf</textarea>
                 </div>
-                
+
             </div>
         );
     }
 }
-
-function fileupload(){
-    alert('here' + document.getElementById('fileinput').value);
-}
-
 
 function pageChange(num, data1){
     data1 = data1.replace("nbps;"," ");
@@ -79,12 +84,17 @@ function pageChange(num, data1){
                 finalData += data[i] + '||****||';
             }
 
+            pdftext = document.getElementById("pdftextdata").value;
+            pdf = document.getElementById("datapdf").src? pdf = document.getElementById("datapdf").src: ' ';
+
             axios({
                 method:'post',
                 url:'https://carnet-api.herokuapp.com/notebook/updateNotebook?token='+token,
                 data:{
                     notebookId:notebookID,
                     data:finalData,
+                    pdf:pdf,
+                    pdftext:pdftext,
                 }
             })
                 .then(function (response) {
@@ -121,9 +131,17 @@ function loadData(){
         user = document.cookie.split(';');
         token = user[0].substring(6);
         notebookID = user[1].substring(12);
-        console.log(user[2].substring(9));
         pageNum = parseInt(user[2].substring(9));
         data = user[3].substring(6);
+        pdf = user[4].substring(5);
+        pdftext = user[5].substring(8);
+    }
+
+    if(pdf.length>4){
+        document.getElementById("datapdf").src=pdf;
+    }
+    if(pdftext.length>1){
+        document.getElementById("pdftextdata").value=pdftext;
     }
 
     let contentBlock = htmlToDraft(data);
@@ -151,12 +169,16 @@ function setData(data1){
                 finalData += data[i] + '||****||';
             }
 
+            pdftext = document.getElementById("pdftextdata").value;
+            pdf = document.getElementById("datapdf").src? pdf = document.getElementById("datapdf").src: ' ';
             axios({
                 method:'post',
                 url:'https://carnet-api.herokuapp.com/notebook/updateNotebook?token='+token,
                 data:{
                     notebookId:notebookID,
                     data:finalData,
+                    pdf:pdf,
+                    pdftext:pdftext,
                 }
             })
                 .then(function (response) {
