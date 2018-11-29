@@ -15,6 +15,7 @@ let pageNum = '';
 let data = [];
 let pdf = '';
 let pdftext = '';
+let pdfcode = '';
 
 class page extends Component {
     state = {
@@ -35,16 +36,36 @@ class page extends Component {
         pdf=document.getElementById("datapdf").src;
         pdf = pdf.substring(pdf.indexOf(';')+8);
         let decodedData = Base64.atob(pdf);
-        decodedData = decodedData.replace(pdftext,' ');
+        decodedData = decodedData.replace(pdfcode,' ');
         pdftext = document.getElementById("pdftextdata").value;
-        let finaldecodeData = decodedData.substring(0,decodedData.indexOf(') Tj')) + pdftext + decodedData.substring(decodedData.indexOf(' ) Tj'));
-        let finalencodedData = 'data:application/pdf;base64,' + Base64.btoa(finaldecodeData);
-        pdf = finalencodedData;
-        document.getElementById("datapdf").src=pdf;
+
+        let codeToAdd = '';
+            let x = 698.000;
+            for( let i=0;i<pdftext.length;i=i+64){
+                let y = i+64;
+                if(y>pdftext.length){
+                    y = pdftext.length;
+                }
+                let temp = "BT\n";
+                temp += "/F3 0010 Tf\n";
+                temp += "69.2500 " + x.toString() + " Td\n";
+                temp += "( " + pdftext.substring(i,y) + " ) Tj\n";
+                temp += "ET\n";
+                codeToAdd += temp;
+                x=x-8;
+            }
+            pdfcode = codeToAdd;
+
+
+            let finaldecodeData = decodedData.substring(0,decodedData.indexOf('BT')) + codeToAdd + decodedData.substring(decodedData.indexOf('BT'));
+            let finalencodedData = 'data:application/pdf;base64,' + Base64.btoa(finaldecodeData);
+            pdf = finalencodedData;
+            document.getElementById("datapdf").src=pdf;
     }
 
     handleFiles = files => {
         document.getElementById("datapdf").src=files.base64;
+        console.log(files.base64);
     }
 
     componentDidMount() {
@@ -57,7 +78,25 @@ class page extends Component {
         if(pdf.length>14 && pdftext.length>1){
             pdf = pdf.substring(pdf.indexOf(';')+8);
             let decodedData = Base64.atob(pdf);
-            let finaldecodeData = decodedData.substring(0,decodedData.indexOf(') Tj')) + pdftext + decodedData.substring(decodedData.indexOf(' ) Tj'));
+            let codeToAdd = '';
+            let x = 698.000;
+            for( let i=0;i<pdftext.length;i=i+64){
+                let y = i+64;
+                if(y>pdftext.length){
+                    y = pdftext.length;
+                }
+                let temp = "BT\n";
+                temp += "/F2 0010 Tf\n";
+                temp += "69.2500 " + x.toString() + " Td\n";
+                temp += "( " + pdftext.substring(i,y) + " ) Tj\n";
+                temp += "ET\n";
+                codeToAdd += temp;
+                x=x-8;
+            }
+            pdfcode = codeToAdd;
+
+
+            let finaldecodeData = decodedData.substring(0,decodedData.indexOf('BT')) + codeToAdd + decodedData.substring(decodedData.indexOf('BT'));
             let finalencodedData = 'data:application/pdf;base64,' + Base64.btoa(finaldecodeData);
             pdf = finalencodedData;
             document.getElementById("datapdf").src=pdf;
@@ -123,7 +162,7 @@ function pageChange(num, data1){
                 pdf = document.getElementById("datapdf").src;
                 pdf = pdf.substring(pdf.indexOf(';')+8);
                 let decodedData = Base64.atob(pdf);
-                decodedData = decodedData.replace(pdftext,' ');
+                decodedData = decodedData.replace(pdfcode,' ');
                 pdftext = document.getElementById("pdftextdata").value;
                 let finalencodedData = 'data:application/pdf;base64,' + Base64.btoa(decodedData);
                 pdf = finalencodedData;
@@ -216,7 +255,7 @@ function setData(data1){
                 pdf = document.getElementById("datapdf").src;
                 pdf = pdf.substring(pdf.indexOf(';')+8);
                 let decodedData = Base64.atob(pdf);
-                decodedData = decodedData.replace(pdftext,' ');
+                decodedData = decodedData.replace(pdfcode,' ');
                 pdftext = document.getElementById("pdftextdata").value;
                 let finalencodedData = 'data:application/pdf;base64,' + Base64.btoa(decodedData);
                 pdf = finalencodedData;
