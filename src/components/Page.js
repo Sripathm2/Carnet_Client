@@ -5,6 +5,7 @@ import draftToHtml from 'draftjs-to-html';
 import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import htmlToDraft from 'html-to-draftjs';
 import axios from "axios";
+import '../css/Page.css';
 
 let token = '';
 let notebookID = '';
@@ -26,20 +27,32 @@ class page extends Component {
         const {editorState} = this.state;
         return (
             <div className="App">
-                <button onClick={()=>pageChange(1, draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Next Page</button>
-                <button onClick={()=>pageChange(-1, draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Prev Page</button>
-                <button onClick={() => setData(draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Done
-                </button>
-                <Editor
-                    editorState={editorState}
-                    wrapperClassName="demo-wrapper"
-                    editorClassName="demo-editor"
-                    onEditorStateChange={this.onEditorStateChange}
-                />
+                <div className="left-side">
+                    <button onClick={()=>pageChange(1, draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Next Page</button>
+                    <button onClick={()=>pageChange(-1, draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Prev Page</button>
+                    <button onClick={() => setData(draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Done
+                    </button>
+                    <Editor
+                        editorState={editorState}
+                        wrapperClassName="demo-wrapper"
+                        editorClassName="demo-editor"
+                        onEditorStateChange={this.onEditorStateChange}
+                    />
+                </div>
+                <div className="right-side">
+                    <input type="file" name="pdf" id="fileinput" accept=".pdf">
+                    <button onClick={fileupload}>Done</button>
+                </div>
+                
             </div>
         );
     }
 }
+
+function fileupload(){
+    alert('here' + document.getElementById('fileinput').value);
+}
+
 
 function pageChange(num, data1){
     data1 = data1.replace("nbps;"," ");
