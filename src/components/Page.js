@@ -7,6 +7,7 @@ import htmlToDraft from 'html-to-draftjs';
 import axios from "axios";
 import '../css/Page.css';
 import ReactFileReader from 'react-file-reader';
+import base64 from "base-64";
 
 let token = '';
 let notebookID = '';
@@ -41,6 +42,14 @@ class page extends Component {
         if(pdftext.length>1){
             document.getElementById("pdftextdata").value=pdftext;
         }
+        /*if(pdf.length>14 && pdftext.length>1){
+            pdf = pdf.substring(pdf.indexOf(';')+1);
+            let decodedData = base64.decode(pdf);
+            let finaldecodeData = decodedData.substring(0,decodedData.indexOf(') Tj')) + pdftext + decodedData.substring(decodedData.indexOf(') Tj'));
+            let finalencodedData = 'data:application/pdf;' + base64.encode(finaldecodeData);
+            pdf = finalencodedData;
+            document.getElementById("datapdf").src=pdf;
+        }*/
     }
 
     render() {

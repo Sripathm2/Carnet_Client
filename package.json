@@ -15,7 +15,8 @@
     "react-draft-wysiwyg": "^1.12.13",
     "draftjs-to-html": "^0.8.4",
     "html-to-draftjs": "^1.4.0",
-    "react-file-reader": "^1.1.4"
+    "react-file-reader": "^1.1.4",
+    "base-64": "^0.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
