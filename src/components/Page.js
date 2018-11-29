@@ -26,8 +26,21 @@ class page extends Component {
         });
     };
 
+    deleteFiles = () => {
+        document.getElementById("datapdf").src='';
+    }
+
     handleFiles = files => {
         document.getElementById("datapdf").src=files.base64;
+    }
+
+    componentDidMount() {
+        if(pdf.length>14){
+            document.getElementById("datapdf").src=pdf;
+        }
+        if(pdftext.length>1){
+            document.getElementById("pdftextdata").value=pdftext;
+        }
     }
 
     render() {
@@ -52,8 +65,8 @@ class page extends Component {
                     </ReactFileReader>
                     <iframe id="datapdf" height="400%" width="100%"/>
                     <textarea id="pdftextdata" rows="4" cols="50">Text to write on pdf</textarea>
+                    <button onClick={this.deleteFiles}> Delete pdf </button>
                 </div>
-
             </div>
         );
     }
@@ -85,7 +98,13 @@ function pageChange(num, data1){
             }
 
             pdftext = document.getElementById("pdftextdata").value;
-            pdf = document.getElementById("datapdf").src? pdf = document.getElementById("datapdf").src: ' ';
+            if(document.getElementById("datapdf").src !== undefined){
+              pdf = document.getElementById("datapdf").src;
+              pdf = pdf.substring(pdf.indexOf(';')+1);
+            }
+            else{
+                pdf = ' ';
+            }
 
             axios({
                 method:'post',
@@ -105,10 +124,14 @@ function pageChange(num, data1){
                     document.cookie = "notebookID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                     document.cookie = "data=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                     document.cookie = "pageNum=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    document.cookie = "pdf=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    document.cookie = "pdftext=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                     document.cookie = "token= " + token + "; path=/;";
                     document.cookie = "notebookID= " + notebookID + "; path=/;";
                     document.cookie = "pageNum= " + (num+pageNum).toString() + "; path=/;";
                     document.cookie = "data= " + data[num+pageNum-1] + "; path=/;";
+                    document.cookie = "pdf= " + pdf + "; path=/;";
+                    document.cookie = "pdftext= " + pdftext + "; path=/;";
                     window.location.replace("/page");
                 })
                 .catch(function (error) {
@@ -133,15 +156,8 @@ function loadData(){
         notebookID = user[1].substring(12);
         pageNum = parseInt(user[2].substring(9));
         data = user[3].substring(6);
-        pdf = user[4].substring(5);
-        pdftext = user[5].substring(8);
-    }
-
-    if(pdf.length>4){
-        document.getElementById("datapdf").src=pdf;
-    }
-    if(pdftext.length>1){
-        document.getElementById("pdftextdata").value=pdftext;
+        pdf = 'data:application/pdf;' + user[4].substring(5);
+        pdftext = user[5].substring(9);
     }
 
     let contentBlock = htmlToDraft(data);
@@ -185,6 +201,8 @@ function setData(data1){
                     document.cookie = "notebookID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                     document.cookie = "data=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                     document.cookie = "pageNum=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    document.cookie = "pdf=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    document.cookie = "pdftext=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                     window.location.replace("/dashboard");
                 })
                 .catch(function (error) {

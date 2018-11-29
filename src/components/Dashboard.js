@@ -54,6 +54,8 @@ function access(){
             document.cookie = "notebookID= " + notebookID + "; path=/;";
             document.cookie = "pageNum= " + (1).toString() + "; path=/;";
             document.cookie = "data= " + data[0] + "; path=/;";
+            document.cookie = "pdf= " + response.data.pdf.substring(response.data.pdf.indexOf(';')+1) + "; path=/;";
+            document.cookie = "pdftext= " + response.data.pdftext + "; path=/;";
             window.location.replace("/page");
         })
         .catch(function (error) {
@@ -312,7 +314,7 @@ function openNotebook(input){
     })
         .then(function (response) {
             let data = response.data.data.split("||****||");
-
+            console.log(response.data);
             document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             document.cookie = "notebookID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             document.cookie = "data=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -321,7 +323,7 @@ function openNotebook(input){
             document.cookie = "notebookID= " + notebookID + "; path=/;";
             document.cookie = "pageNum= " + (1).toString() + "; path=/;";
             document.cookie = "data= " + data[0] + "; path=/;";
-            document.cookie = "pdf= " + response.data.pdf + "; path=/;";
+            document.cookie = "pdf= " + response.data.pdf.substring(response.data.pdf.indexOf(';')+1) + "; path=/;";
             document.cookie = "pdftext= " + response.data.pdftext + "; path=/;";
             window.location.replace("/page");
         })
