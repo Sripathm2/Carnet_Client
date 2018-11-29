@@ -29,7 +29,7 @@ class page extends Component {
     };
 
     deleteFiles = () => {
-        document.getElementById("datapdf").src='';
+        document.getElementById("datapdf").src=' ';
     }
 
     writeFiles = () => {
@@ -158,7 +158,7 @@ function pageChange(num, data1){
                 finalData += data[i] + '||****||';
             }
 
-            if(document.getElementById("datapdf").src !== undefined){
+            if(document.getElementById("datapdf").src !== undefined && document.getElementById("datapdf").src.length > 14){
                 pdf = document.getElementById("datapdf").src;
                 pdf = pdf.substring(pdf.indexOf(';')+8);
                 let decodedData = Base64.atob(pdf);
@@ -251,7 +251,7 @@ function setData(data1){
                 finalData += data[i] + '||****||';
             }
 
-            if(document.getElementById("datapdf").src !== undefined){
+            if(document.getElementById("datapdf").src !== undefined && document.getElementById("datapdf").src.length > 14){
                 pdf = document.getElementById("datapdf").src;
                 pdf = pdf.substring(pdf.indexOf(';')+8);
                 let decodedData = Base64.atob(pdf);
