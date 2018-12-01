@@ -13,6 +13,7 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
+  
 }
 
 .containerdislikelogonotebook {
@@ -24,6 +25,18 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
+}
+
+.containerdislikelogonotebook:hover {
+  float: left;
+  width: 11.6183659217%;
+  height: 42px;
+  margin: 13px 0 0 3.40433%;
+  background-image: url('../res/dislike.JPG');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  border: 1px black solid;
 }
 
 .containerldcnotebook {
@@ -42,6 +55,17 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
+}
+.containerlikelogonotebook:hover {
+  float: left;
+  width: 11.6183659217%;
+  height: 42px;
+  margin: 13px 0 0 1.67598%;
+  background-image: url('../res/likes.JPG');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  border: 1px black solid;
 }
 
 .containermainnotebook {
@@ -79,6 +103,17 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
+}
+.containersubscribenotebook:hover {
+  float: left;
+  width: 11.6183659217%;
+  height: 42px;
+  margin: 13px 0 0 2.67982%;
+  background-image: url('../res/notify.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  border: 1px black solid;
 }
 
 .textdislikenumnotebook {
