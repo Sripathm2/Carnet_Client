@@ -21,13 +21,14 @@ const Dashboard = () =>(
             <label className="textsubs" id = "subscriber">Subscribers: NaN</label>
             <label className="textemail" id = "email">Email Address of the User</label>
             <input id="create_field" className="input-create" type="text"  defaultValue="P: NP:"/>
-            <button onClick={createnotebook} className="button-create">create</button>
+            <button onClick={createnotebook} className="button-create">Create Notebook</button>
+            
             <div id ="notificationsContainer" className="containerNotify">
                 <label className = "textname" id ="Notification">Notifications</label>
              </div>
         </div>
         <div className="containermain clearfix">
-            <label className = "textname" >Notebook</label>
+            <label className = "textname" >DASHBOARD</label>
             <input id="NotebookId_field" className="_input" type="text" placeholder='Notebook ID'/>
             <button onClick={access} className="_button">Open</button>
             <div id="notebookContainer" className="containernotebook"></div>
