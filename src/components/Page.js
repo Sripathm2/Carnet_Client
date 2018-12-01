@@ -111,9 +111,9 @@ class page extends Component {
         return (
             <div className="App">
                 <div className="left-side">
-                    <button onClick={()=>pageChange(1, draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Next Page</button>
-                    <button onClick={()=>pageChange(-1, draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Prev Page</button>
-                    <button onClick={() => setData(draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Done
+                    <button class = "pagebutton" onClick={()=>pageChange(1, draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Next Page</button>
+                    <button class = "pagebutton" onClick={()=>pageChange(-1, draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Prev Page</button>
+                    <button class = "pagebutton" onClick={() => setData(draftToHtml(convertToRaw(editorState.getCurrentContent())))}>Done
                     </button>
                     <Editor
                         editorState={editorState}
@@ -121,16 +121,19 @@ class page extends Component {
                         editorClassName="demo-editor"
                         onEditorStateChange={this.onEditorStateChange}
                     />
+    
                 </div>
                 <div className="right-side">
                     <ReactFileReader base64={true} handleFiles={this.handleFiles}>
-                        <button className='btn'>Upload</button>
+                        <button class = "pagebutton">Upload PDF</button>
                     </ReactFileReader>
-                    <iframe id="datapdf" height="400%" width="100%"/>
-                    <textarea id="pdftextdata" rows="4" cols="50">Text to write on pdf</textarea>
-                    <button onClick={this.deleteFiles}> Delete pdf </button>
-                    <button onClick={this.writeFiles}> Write on pdf </button>
+                    <iframe class = "pdfarea" id="datapdf" height="400%" width="100%"/>
+                    <textarea  class = "pagemessage" id="pdftextdata" rows="4" cols="50">Text to write on pdf</textarea>
+                    <button class = "pagebottombutton" onClick={this.deleteFiles}>Delete PDF</button>
+                    <button class = "pagebottombutton" onClick={this.writeFiles}>Write on PDF</button>
                 </div>
+                <p>Carnet Inc. Copyright &copy; 2018. Pooja Tewari, Shivangi Chand, Siddharth Dhar, Sripath Mishra,
+                </p>
             </div>
         );
     }

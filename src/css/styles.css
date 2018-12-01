@@ -27,6 +27,7 @@ body {
   background-color: rgb(29, 72, 140);
   font-size: 1em;
   text-align: center;
+  padding-top: 2%;
   color: rgb(255, 255, 255);
 }
 
@@ -396,7 +397,7 @@ body {
   margin: 44px 0 0 7.04553%;
   font-size: 0.688em;
   text-align: center;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 41, 129);
 }
 
 .textemail {
@@ -497,7 +498,8 @@ body {
   float: left;
   font-size: 1em;
   text-align: center;
-  color: rgb(0, 0, 0);
+  background-color: rgb(76, 127, 175); /* Green */
+  color:white;
 }
 
 ._input {

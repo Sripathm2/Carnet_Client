@@ -9,7 +9,19 @@ body {
 .page-forgetpassword-copy {
     color: rgb(29, 72, 140);
 }
-
+#searchbutton{
+  
+    background-color: rgb(76, 127, 175); /* Green */
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      margin: 10px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 12px;
+  }
 .page-index {
     color: rgb(255, 255, 255);
 }
@@ -175,6 +187,7 @@ body {
     clear: both;
     width: 90.2127659574%;
     min-height: 35px;
+    margin-top:15px;
     margin-left: 5.95745%;
     font-size: 1.455em;
     text-align: center;
@@ -222,6 +235,11 @@ body {
     float: left;
     font-size: 1.455em;
     text-align: center;
+    margin: 10px 15px;
+    background-color: rgb(76, 127, 175);
+    color: white;
+
+
 }
 
 ._element {

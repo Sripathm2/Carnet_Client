@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(165, 239, 252);
+  background-color: rgb(233, 240, 239);
   font: 400 1em/1.38 Helvetica;
   color: rgb(0, 0, 0);
 }
@@ -13,6 +13,7 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
+  
 }
 
 .containerdislikelogonotebook {
@@ -24,6 +25,18 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
+}
+
+.containerdislikelogonotebook:hover {
+  float: left;
+  width: 11.6183659217%;
+  height: 42px;
+  margin: 13px 0 0 3.40433%;
+  background-image: url('../res/dislike.JPG');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  border: 1px black solid;
 }
 
 .containerldcnotebook {
@@ -43,13 +56,27 @@ body {
   background-size: contain;
   background-position: center center;
 }
+.containerlikelogonotebook:hover {
+  float: left;
+  width: 11.6183659217%;
+  height: 42px;
+  margin: 13px 0 0 1.67598%;
+  background-image: url('../res/likes.JPG');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  border: 1px black solid;
+}
 
 .containermainnotebook {
   float: left;
-  width: 80%;
-  height: 107px;
+  width: 90%;
+  height: 150px;
   margin: 57px 0 0 10%;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(185, 176, 182);
+  border: 2px rgb(3, 29, 102) solid;
+  border-radius: 25px;
+
 }
 
 .containermainnotebook:hover {
@@ -76,6 +103,17 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
+}
+.containersubscribenotebook:hover {
+  float: left;
+  width: 11.6183659217%;
+  height: 42px;
+  margin: 13px 0 0 2.67982%;
+  background-image: url('../res/notify.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  border: 1px black solid;
 }
 
 .textdislikenumnotebook {
