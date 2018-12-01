@@ -379,6 +379,8 @@ function like(input, like, dislike, comments){
 }
 
 function commentCreate(input, like, dislike, comments){
+
+    console.log(comments);
     let table = document.createElement("TABLE");
     comments = comments.split('--');
     for(let j=0; j<comments.length; j++){
@@ -405,7 +407,6 @@ function commentSubmit(input, like, dislike, comments){
 
     comments = document.getElementById('divInnerBottomCommentinput'+input).value;
 
-    alert('heer');
 
     if(comments.length < 1){
         return;
